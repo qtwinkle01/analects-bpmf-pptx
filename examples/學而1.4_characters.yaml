@@ -1,0 +1,107 @@
+# 學而篇 1.4（characters 格式範例）
+# 透過 ss_feature 指定破音字，例如「曾」的第二讀音 ss01。
+
+title: 學而 1.4
+
+slides:
+  - speaker_characters:
+      - char: "曾"
+        ss_feature: ss01
+      - char: "子"
+        ss_feature: null
+      - char: "曰"
+        ss_feature: null
+      - char: "："
+        ss_feature: null
+    speaker_pinyin:
+      - underline: "Zēng  zǐ   yuē"
+      - plain: "   :"
+    speaker_english: "Zeng Zi said,"
+
+    sentences:
+      - characters:
+          - char: "「"
+            ss_feature: null
+          - char: "吾"
+            ss_feature: null
+          - char: "日"
+            ss_feature: null
+          - char: "三"
+            ss_feature: null
+          - char: "省"
+            ss_feature: ss01
+          - char: "吾"
+            ss_feature: null
+          - char: "身"
+            ss_feature: null
+          - char: "："
+            ss_feature: null
+        pinyin:
+          - underline: "Wú   rì   sān   xǐng   wú   shēn"
+          - plain: "   :"
+        english: '"I daily examine myself on three points:'
+
+      - characters:
+          - char: "為"
+            ss_feature: null
+          - char: "人"
+            ss_feature: null
+          - char: "謀"
+            ss_feature: null
+          - char: "而"
+            ss_feature: null
+          - char: "不"
+            ss_feature: null
+          - char: "忠"
+            ss_feature: null
+          - char: "乎"
+            ss_feature: null
+          - char: "？"
+            ss_feature: null
+        pinyin:
+          - underline: "Wèi   rén   móu   ér   bù   zhōng   hū"
+          - plain: "   ?"
+        english: "whether, in transacting business for others, I may have been not faithful;"
+
+  - sentences:
+      - characters:
+          - char: "與"
+            ss_feature: null
+          - char: "朋"
+            ss_feature: null
+          - char: "友"
+            ss_feature: null
+          - char: "交"
+            ss_feature: null
+          - char: "而"
+            ss_feature: null
+          - char: "不"
+            ss_feature: null
+          - char: "信"
+            ss_feature: null
+          - char: "乎"
+            ss_feature: null
+          - char: "？"
+            ss_feature: null
+        pinyin:
+          - underline: "Yǔ   péng   yǒu   jiāo   ér   bù   xìn   hū"
+          - plain: "   ?"
+        english: "whether, in intercourse with friends, I may have been not sincere;"
+
+      - characters:
+          - char: "傳"
+            ss_feature: null
+          - char: "不"
+            ss_feature: null
+          - char: "習"
+            ss_feature: null
+          - char: "乎"
+            ss_feature: null
+          - char: "？"
+            ss_feature: null
+          - char: "」"
+            ss_feature: null
+        pinyin:
+          - underline: "Chuán   bù   xí   hū"
+          - plain: '   ?'
+        english: 'whether I may have not mastered and practiced the instructions of my teacher."'

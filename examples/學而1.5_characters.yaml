@@ -1,0 +1,91 @@
+# 學而篇 1.5（characters 格式範例）
+# 將每個字拆成 char，ss_feature: null 表示預設讀音，必要時可改為 ss01、ss10。
+
+title: 學而 1.5
+
+slides:
+  - speaker_characters:
+      - char: "子"
+        ss_feature: null
+      - char: "曰"
+        ss_feature: null
+      - char: "："
+        ss_feature: null
+    speaker_pinyin:
+      - underline: "Zǐ   yuē"
+      - plain: "   :"
+    speaker_english: "The Master said,"
+
+    sentences:
+      - characters:
+          - char: "「"
+            ss_feature: null
+          - char: "道"
+            ss_feature: null
+          - char: "千"
+            ss_feature: null
+          - char: "乘"
+            ss_feature: null
+          - char: "之"
+            ss_feature: null
+          - char: "國"
+            ss_feature: null
+          - char: "，"
+            ss_feature: null
+        pinyin:
+          - underline: "Dào   qiān   shèng   zhī   guó"
+          - plain: "   ,"
+        english: '"In guiding a state of a thousand chariots,'
+
+      - characters:
+          - char: "敬"
+            ss_feature: null
+          - char: "事"
+            ss_feature: null
+          - char: "而"
+            ss_feature: null
+          - char: "信"
+            ss_feature: null
+          - char: "，"
+            ss_feature: null
+        pinyin:
+          - underline: "Jìng   shì   ér   xìn"
+          - plain: "   ,"
+        english: "approach every matter with reverence and faithfulness;"
+
+  - sentences:
+      - characters:
+          - char: "節"
+            ss_feature: null
+          - char: "用"
+            ss_feature: null
+          - char: "而"
+            ss_feature: null
+          - char: "愛"
+            ss_feature: null
+          - char: "人"
+            ss_feature: null
+          - char: "，"
+            ss_feature: null
+        pinyin:
+          - underline: "Jié   yòng   ér   ài   rén"
+          - plain: "   ,"
+        english: "be economical in expenditure and love the people;"
+
+      - characters:
+          - char: "使"
+            ss_feature: null
+          - char: "民"
+            ss_feature: null
+          - char: "以"
+            ss_feature: null
+          - char: "時"
+            ss_feature: null
+          - char: "。"
+            ss_feature: null
+          - char: "」"
+            ss_feature: null
+        pinyin:
+          - underline: "Shǐ   mín   yǐ   shí"
+          - plain: '   .\u201D'
+        english: 'and employ the people only at the proper seasons."'

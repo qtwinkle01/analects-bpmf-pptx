@@ -1,0 +1,40 @@
+# 學而篇 1.5
+# 子曰：「道千乘之國，敬事而信，節用而愛人，使民以時。」
+# The Master said, "In guiding a state of a thousand chariots..."
+
+title: 學而 1.5
+
+slides:
+  # 投影片 1：說話者 + 前兩句
+  - speaker: "子曰："
+    speaker_pinyin:
+      - underline: "Zǐ   yuē"
+      - plain: "   :"
+    speaker_english: "The Master said,"
+
+    sentences:
+      - chinese: "「道千乘之國，"
+        pinyin:
+          - underline: "Dào   qiān   shèng   zhī   guó"
+          - plain: "   ,"
+        english: '"In guiding a state of a thousand chariots,'
+
+      - chinese: "敬事而信，"
+        pinyin:
+          - underline: "Jìng   shì   ér   xìn"
+          - plain: "   ,"
+        english: "approach every matter with reverence and faithfulness;"
+
+  # 投影片 2：後兩句
+  - sentences:
+      - chinese: "節用而愛人，"
+        pinyin:
+          - underline: "Jié   yòng   ér   ài   rén"
+          - plain: "   ,"
+        english: "be economical in expenditure and love the people;"
+
+      - chinese: "使民以時。」"
+        pinyin:
+          - underline: "Shǐ   mín   yǐ   shí"
+          - plain: "   .\u201D"
+        english: "and employ the people only at the proper seasons.\u201D"

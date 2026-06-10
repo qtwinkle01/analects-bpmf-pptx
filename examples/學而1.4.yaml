@@ -1,0 +1,40 @@
+# 學而篇 1.4
+# 曾子曰：「吾日三省吾身：為人謀而不忠乎？與朋友交而不信乎？傳不習乎？」
+# Zeng Zi said, "I daily examine myself on three points..."
+
+title: 學而 1.4
+
+slides:
+  # 投影片 1：說話者 + 前兩句
+  - speaker: "曾\U000E01E1子曰："
+    speaker_pinyin:
+      - underline: "Zēng  zǐ   yuē"
+      - plain: "   :"
+    speaker_english: "Zeng Zi said,"
+
+    sentences:
+      - chinese: "「吾日三省\U000E01E1吾身："
+        pinyin:
+          - underline: "Wú   rì   sān   xǐng   wú   shēn"
+          - plain: "   :"
+        english: '"I daily examine myself on three points:'
+
+      - chinese: "為人謀而不忠乎？"
+        pinyin:
+          - underline: "Wèi   rén   móu   ér   bù   zhōng   hū"
+          - plain: "   ?"
+        english: "whether, in transacting business for others, I may have been not faithful;"
+
+  # 投影片 2：後兩句
+  - sentences:
+      - chinese: "與朋友交而不信乎？"
+        pinyin:
+          - underline: "Yǔ   péng   yǒu   jiāo   ér   bù   xìn   hū"
+          - plain: "   ?"
+        english: "whether, in intercourse with friends, I may have been not sincere;"
+
+      - chinese: "傳不習乎？」"
+        pinyin:
+          - underline: "Chuán   bù   xí   hū"
+          - plain: "   ?"
+        english: "whether I may have not mastered and practiced the instructions of my teacher.\u201D"
