@@ -67,6 +67,7 @@ AVAILABLE_WIDTH = SLIDE_CX - X_MARGIN * 2
 # 渲染參數
 IMG_DPI         = 150
 BPMF_FONT_SIZE  = 80   # pt
+BPMF_CHAR_GAP   = 10   # px between rendered BPMF glyph images
 
 # PPTX 文字大小
 SZ_PINYIN  = 3200
@@ -138,6 +139,9 @@ def render_single_unit(
     fg_color: tuple = (0, 0, 0),
     bg_color: tuple = (255, 255, 255),
 ) -> Image.Image:
+    is_colon = unit in (":", "：")
+    if is_colon:
+        unit = "："
     font_bytes = Path(font_path).read_bytes()
     blob = hb.Blob(font_bytes)
     face = hb.Face(blob)
@@ -170,6 +174,11 @@ def render_single_unit(
     img = Image.new("RGB", (bmp.width, bmp.rows), bg_color)
     color_img = Image.new("RGB", (bmp.width, bmp.rows), fg_color)
     img.paste(color_img, (0, 0), mask=glyph_img)
+    if is_colon:
+        target_width = max(font_size * 2 // 3, bmp.width + font_size // 2)
+        padded = Image.new("RGB", (target_width, bmp.rows), bg_color)
+        padded.paste(img, ((target_width - bmp.width) // 2, 0))
+        return padded
     return img
 
 
@@ -194,7 +203,8 @@ def render_text(
         for unit in units
     ]
 
-    total_w = sum(img.width for img in images)
+    char_gap = BPMF_CHAR_GAP if len(images) > 1 else 0
+    total_w = sum(img.width for img in images) + char_gap * max(len(images) - 1, 0)
     max_h = max((img.height for img in images), default=1)
     img = Image.new("RGB", (max(total_w, 1), max(max_h, 1)), bg_color)
 
@@ -202,7 +212,7 @@ def render_text(
     for glyph_img in images:
         y = max_h - glyph_img.height
         img.paste(glyph_img, (x, y))
-        x += glyph_img.width
+        x += glyph_img.width + char_gap
 
     return img
 
@@ -246,13 +256,14 @@ def make_bpmf_image(text_or_chars, font_path: Path,
                 )
             )
 
-        total_w = sum(img.width for img in glyph_images)
+        char_gap = BPMF_CHAR_GAP if len(glyph_images) > 1 else 0
+        total_w = sum(img.width for img in glyph_images) + char_gap * max(len(glyph_images) - 1, 0)
         max_h = max((img.height for img in glyph_images), default=1)
         img = Image.new("RGB", (max(total_w, 1), max_h), (255, 255, 255))
         x = 0
         for glyph_img in glyph_images:
             img.paste(glyph_img, (x, (max_h - glyph_img.height) // 2))
-            x += glyph_img.width
+            x += glyph_img.width + char_gap
     else:
         img = render_text(text_or_chars, font_path, font_size)
 
