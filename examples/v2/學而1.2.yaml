@@ -1,0 +1,56 @@
+# 論語．學而 1.2（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.2 · Analects 1.2"
+    speaker: { zh: "有子曰：", py: "Yǒu zǐ yuē", en: "The philosopher You said," }
+    lines:
+      - zh: "「其為人也孝[弟:2]，"
+        py: "qí wéi rén yě xiào tì"
+        en: "“Those who are filial and respect their elders,"
+      - zh: "而[好:1]犯上者，[鮮:1]矣；"
+        py: "ér hào fàn shàng zhě xiǎn yǐ"
+        en: "yet love to offend against their superiors — such people are few;"
+
+  - type: content
+    tag: "學而 1.2 · Analects 1.2"
+    lines:
+      - zh: "不[好:1]犯上，"
+        py: "bù hào fàn shàng"
+        en: "One who does not like to offend against his superiors,"
+      - zh: "而[好:1]作亂者，"
+        py: "ér hào zuò luàn zhě"
+        en: "and yet loves to stir up disorder —"
+      - zh: "未之有也。"
+        py: "wèi zhī yǒu yě"
+        en: "there has never been such a person."
+
+  - type: content
+    tag: "學而 1.2 · Analects 1.2"
+    lines:
+      - zh: "君子務本，"
+        py: "jūn zǐ wù běn"
+        en: "The gentleman attends to the root of things;"
+      - zh: "本立而道生。"
+        py: "běn lì ér dào shēng"
+        en: "when the root is established, the Way grows from it."
+
+  - type: content
+    tag: "學而 1.2 · Analects 1.2"
+    lines:
+      - zh: "孝[弟:2]也者，"
+        py: "xiào tì yě zhě"
+        en: "Filial piety and respect for elders —"
+      - zh: "其為仁之本[與:2]！」"
+        py: "qí wéi rén zhī běn yú"
+        en: "are they not the root of all benevolent action?”"
+
+  - type: vocab
+    tag: "學而 1.2 · Analects 1.2"
+    words:
+      - { zh: "孝", py: "xiào", en: "filial piety" }
+      - { zh: "[弟:2]", py: "tì", en: "respect for elders" }
+      - { zh: "本", py: "běn", en: "root; foundation" }

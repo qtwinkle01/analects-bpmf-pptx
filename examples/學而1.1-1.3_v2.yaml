@@ -1,0 +1,136 @@
+# 論語．學而篇 1.1–1.3 — 教學簡報 v2
+# 破音字語法：[字:1]=第2讀音(ss01)、[字:2]=第3讀音(ss02)、[字|ㄩㄝˋ]=手動合成
+# 拼音：以空格分隔音節，數量須等於該行漢字數（標點不算）
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: title
+    zh_main: "[論:1]語"
+    py_main: "Lún yǔ"
+    zh_sub: "學而篇"
+    py_sub: "Xué ér piān"
+    en: "The Analects of Confucius — Book One · “To Learn”"
+    note: "for learners of Chinese · 注音 Zhuyin · 拼音 Pinyin · English"
+
+  - type: content
+    tag: "介紹 · Introduction"
+    lines:
+      - zh: "孔子"
+        py: "Kǒng zǐ"
+        en: "Confucius (551–479 BC) — China's greatest teacher. His students collected his sayings in the Analects."
+      - zh: "怎麼讀？"
+        py: "zěn me dú"
+        en: "Each page: characters with Zhuyin → Pinyin below each character → English."
+
+  - type: content
+    tag: "學而 1.1 · Analects 1.1"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「學而時習之，"
+        py: "xué ér shí xí zhī"
+        en: "“To learn and constantly practice what is learned —"
+      - zh: "不亦[說|ㄩㄝˋ]乎？"
+        py: "bù yì yuè hū"
+        en: "is it not a pleasure?"
+
+  - type: content
+    tag: "學而 1.1 · Analects 1.1"
+    lines:
+      - zh: "有朋自遠方來，"
+        py: "yǒu péng zì yuǎn fāng lái"
+        en: "To have friends coming from distant places —"
+      - zh: "不亦樂乎？"
+        py: "bù yì lè hū"
+        en: "is it not delightful?"
+
+  - type: content
+    tag: "學而 1.1 · Analects 1.1"
+    lines:
+      - zh: "人不知而不慍，"
+        py: "rén bù zhī ér bù yùn"
+        en: "To feel no resentment though others take no note of you —"
+      - zh: "不亦君子乎？」"
+        py: "bù yì jūn zǐ hū"
+        en: "is that not the mark of a true gentleman?”"
+
+  - type: vocab
+    tag: "學而 1.1 · Analects 1.1"
+    words:
+      - { zh: "學", py: "xué", en: "to learn, to study" }
+      - { zh: "朋", py: "péng", en: "a friend" }
+      - { zh: "君子", py: "jūn zǐ", en: "a gentleman; person of virtue" }
+
+  - type: content
+    tag: "學而 1.2 · Analects 1.2"
+    speaker: { zh: "有子曰：", py: "Yǒu zǐ yuē", en: "The philosopher You said," }
+    lines:
+      - zh: "「其為人也孝[弟:2]，"
+        py: "qí wéi rén yě xiào tì"
+        en: "“Those who are filial and respect their elders,"
+      - zh: "而[好:1]犯上者，[鮮:1]矣；"
+        py: "ér hào fàn shàng zhě xiǎn yǐ"
+        en: "yet love to offend against their superiors — such people are few;"
+
+  - type: content
+    tag: "學而 1.2 · Analects 1.2"
+    lines:
+      - zh: "不[好:1]犯上，"
+        py: "bù hào fàn shàng"
+        en: "One who does not like to offend against his superiors,"
+      - zh: "而[好:1]作亂者，"
+        py: "ér hào zuò luàn zhě"
+        en: "and yet loves to stir up disorder —"
+      - zh: "未之有也。"
+        py: "wèi zhī yǒu yě"
+        en: "there has never been such a person."
+
+  - type: content
+    tag: "學而 1.2 · Analects 1.2"
+    lines:
+      - zh: "君子務本，"
+        py: "jūn zǐ wù běn"
+        en: "The gentleman attends to the root of things;"
+      - zh: "本立而道生。"
+        py: "běn lì ér dào shēng"
+        en: "when the root is established, the Way grows from it."
+
+  - type: content
+    tag: "學而 1.2 · Analects 1.2"
+    lines:
+      - zh: "孝[弟:2]也者，"
+        py: "xiào tì yě zhě"
+        en: "Filial piety and respect for elders —"
+      - zh: "其為仁之本[與:2]！」"
+        py: "qí wéi rén zhī běn yú"
+        en: "are they not the root of all benevolent action?”"
+
+  - type: vocab
+    tag: "學而 1.2 · Analects 1.2"
+    words:
+      - { zh: "孝", py: "xiào", en: "filial piety" }
+      - { zh: "[弟:2]", py: "tì", en: "respect for elders" }
+      - { zh: "本", py: "běn", en: "root; foundation" }
+
+  - type: content
+    tag: "學而 1.3 · Analects 1.3"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「巧言令色，"
+        py: "qiǎo yán lìng sè"
+        en: "“Fine words and an insinuating appearance"
+      - zh: "[鮮:1]矣仁！」"
+        py: "xiǎn yǐ rén"
+        en: "are seldom associated with true virtue.”"
+
+  - type: vocab
+    tag: "學而 1.3 · Analects 1.3"
+    words:
+      - { zh: "巧言", py: "qiǎo yán", en: "clever words" }
+      - { zh: "令色", py: "lìng sè", en: "a flattering face" }
+      - { zh: "仁", py: "rén", en: "true virtue; benevolence" }
+
+  - type: end
+    zh: "謝謝！"
+    py: "Xiè xie!"
+    en: "Thank you! · Coming next: Analects 1.4 – 1.16"

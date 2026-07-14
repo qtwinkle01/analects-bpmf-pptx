@@ -1,0 +1,70 @@
+# 論語．學而 1.15（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.15 · Analects 1.15"
+    speaker: { zh: "子貢曰：", py: "Zǐ gòng yuē", en: "Zi Gong said," }
+    lines:
+      - zh: "「貧而無諂，"
+        py: "pín ér wú chǎn"
+        en: "“Poor yet never flattering,"
+      - zh: "富而無驕，何如？」"
+        py: "fù ér wú jiāo hé rú"
+        en: "rich yet never arrogant — how is that?”"
+
+  - type: content
+    tag: "學而 1.15 · Analects 1.15"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「可也。未若貧而樂，"
+        py: "kě yě wèi ruò pín ér lè"
+        en: "“Good. But not as good as poor yet joyful,"
+      - zh: "富而[好:1]禮者也。」"
+        py: "fù ér hào lǐ zhě yě"
+        en: "or rich yet loving ritual.”"
+
+  - type: content
+    tag: "學而 1.15 · Analects 1.15"
+    speaker: { zh: "子貢曰：", py: "Zǐ gòng yuē", en: "Zi Gong said," }
+    lines:
+      - zh: "「詩云：『如切如磋，"
+        py: "shī yún rú qiē rú cuō"
+        en: "“The Book of Poetry says: ‘Like cutting, then filing;"
+      - zh: "如琢如磨。』"
+        py: "rú zhuó rú mó"
+        en: "like carving, then polishing.’"
+
+  - type: content
+    tag: "學而 1.15 · Analects 1.15"
+    lines:
+      - zh: "其斯之謂[與:2]？」"
+        py: "qí sī zhī wèi yú"
+        en: "Is that what you mean?”"
+
+  - type: content
+    tag: "學而 1.15 · Analects 1.15"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「賜也，"
+        py: "sì yě"
+        en: "“Ci (Zi Gong),"
+      - zh: "始可與言詩已矣，"
+        py: "shǐ kě yǔ yán shī yǐ yǐ"
+        en: "now I can discuss the Poems with you —"
+
+  - type: content
+    tag: "學而 1.15 · Analects 1.15"
+    lines:
+      - zh: "告諸往而知來者。」"
+        py: "gào zhū wǎng ér zhī lái zhě"
+        en: "told what has gone, you know what is to come.”"
+
+  - type: vocab
+    tag: "學而 1.15 · Analects 1.15"
+    words:
+      - { zh: "貧", py: "pín", en: "poor" }
+      - { zh: "富", py: "fù", en: "rich" }
+      - { zh: "驕", py: "jiāo", en: "arrogant" }

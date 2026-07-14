@@ -1,0 +1,36 @@
+# 論語．學而 1.8（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.8 · Analects 1.8"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「君子不重則不威，"
+        py: "jūn zǐ bù zhòng zé bù wēi"
+        en: "“A gentleman without gravity has no authority,"
+      - zh: "學則不固。"
+        py: "xué zé bù gù"
+        en: "and his learning will not be solid."
+
+  - type: content
+    tag: "學而 1.8 · Analects 1.8"
+    lines:
+      - zh: "主忠信，"
+        py: "zhǔ zhōng xìn"
+        en: "Hold loyalty and sincerity first;"
+      - zh: "無友不如己者，"
+        py: "wú yǒu bù rú jǐ zhě"
+        en: "have no friends not equal to yourself;"
+      - zh: "過則勿憚改。」"
+        py: "guò zé wù dàn gǎi"
+        en: "when you make a mistake, do not fear to correct it.”"
+
+  - type: vocab
+    tag: "學而 1.8 · Analects 1.8"
+    words:
+      - { zh: "威", py: "wēi", en: "dignity, authority" }
+      - { zh: "過", py: "guò", en: "a fault, a mistake" }
+      - { zh: "改", py: "gǎi", en: "to correct, to change" }

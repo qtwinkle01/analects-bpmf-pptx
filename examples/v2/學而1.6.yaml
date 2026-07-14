@@ -1,0 +1,46 @@
+# 論語．學而 1.6（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.6 · Analects 1.6"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「弟子入則孝，"
+        py: "dì zǐ rù zé xiào"
+        en: "“A young man should be filial at home,"
+      - zh: "出則[弟:2]，"
+        py: "chū zé tì"
+        en: "and respectful to elders when away from home;"
+
+  - type: content
+    tag: "學而 1.6 · Analects 1.6"
+    lines:
+      - zh: "謹而信，"
+        py: "jǐn ér xìn"
+        en: "careful and sincere,"
+      - zh: "汎愛眾，"
+        py: "fàn ài zhòng"
+        en: "overflowing with love for all,"
+      - zh: "而親仁。"
+        py: "ér qīn rén"
+        en: "and close to those of true virtue."
+
+  - type: content
+    tag: "學而 1.6 · Analects 1.6"
+    lines:
+      - zh: "行有餘力，"
+        py: "xíng yǒu yú lì"
+        en: "With energy left over after doing these things,"
+      - zh: "則以學文。」"
+        py: "zé yǐ xué wén"
+        en: "let him study culture and the arts.”"
+
+  - type: vocab
+    tag: "學而 1.6 · Analects 1.6"
+    words:
+      - { zh: "弟子", py: "dì zǐ", en: "a young man; disciple" }
+      - { zh: "眾", py: "zhòng", en: "everyone, the multitude" }
+      - { zh: "文", py: "wén", en: "culture, learning" }

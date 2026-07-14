@@ -1,0 +1,23 @@
+# 論語．學而 1.9（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.9 · Analects 1.9"
+    speaker: { zh: "[曾:1]子曰：", py: "Zēng zǐ yuē", en: "The philosopher Zeng said," }
+    lines:
+      - zh: "「慎終追遠，"
+        py: "shèn zhōng zhuī yuǎn"
+        en: "“Attend carefully to funeral rites, and honor distant ancestors —"
+      - zh: "民德歸厚矣。」"
+        py: "mín dé guī hòu yǐ"
+        en: "then the people's virtue will grow deep again.”"
+
+  - type: vocab
+    tag: "學而 1.9 · Analects 1.9"
+    words:
+      - { zh: "慎", py: "shèn", en: "careful, attentive" }
+      - { zh: "追", py: "zhuī", en: "to trace back, to honor" }
+      - { zh: "德", py: "dé", en: "virtue" }

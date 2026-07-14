@@ -1,0 +1,23 @@
+# 論語．學而 1.16（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.16 · Analects 1.16"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「不患人之不己知，"
+        py: "bù huàn rén zhī bù jǐ zhī"
+        en: "“Do not worry that others do not know you;"
+      - zh: "患不知人也。」"
+        py: "huàn bù zhī rén yě"
+        en: "worry that you do not know others.”"
+
+  - type: vocab
+    tag: "學而 1.16 · Analects 1.16"
+    words:
+      - { zh: "患", py: "huàn", en: "to worry about" }
+      - { zh: "知", py: "zhī", en: "to know, to understand" }
+      - { zh: "人", py: "rén", en: "others, people" }

@@ -1,0 +1,43 @@
+# 論語．學而 1.13（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.13 · Analects 1.13"
+    speaker: { zh: "有子曰：", py: "Yǒu zǐ yuē", en: "The philosopher You said," }
+    lines:
+      - zh: "「信近於義，"
+        py: "xìn jìn yú yì"
+        en: "“When promises accord with what is right,"
+      - zh: "言可復也；"
+        py: "yán kě fù yě"
+        en: "the words can be kept;"
+
+  - type: content
+    tag: "學而 1.13 · Analects 1.13"
+    lines:
+      - zh: "恭近於禮，"
+        py: "gōng jìn yú lǐ"
+        en: "when respect accords with ritual,"
+      - zh: "[遠:1]恥辱也；"
+        py: "yuàn chǐ rǔ yě"
+        en: "one keeps shame and disgrace away;"
+
+  - type: content
+    tag: "學而 1.13 · Analects 1.13"
+    lines:
+      - zh: "因不失其親，"
+        py: "yīn bù shī qí qīn"
+        en: "when one relies on those worthy of closeness,"
+      - zh: "亦可宗也。」"
+        py: "yì kě zōng yě"
+        en: "they can be one's guides.”"
+
+  - type: vocab
+    tag: "學而 1.13 · Analects 1.13"
+    words:
+      - { zh: "義", py: "yì", en: "what is right" }
+      - { zh: "恥辱", py: "chǐ rǔ", en: "shame, disgrace" }
+      - { zh: "親", py: "qīn", en: "close, intimate" }

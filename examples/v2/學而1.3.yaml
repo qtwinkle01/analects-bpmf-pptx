@@ -1,0 +1,23 @@
+# 論語．學而 1.3（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.3 · Analects 1.3"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「巧言令色，"
+        py: "qiǎo yán lìng sè"
+        en: "“Fine words and an insinuating appearance"
+      - zh: "[鮮:1]矣仁！」"
+        py: "xiǎn yǐ rén"
+        en: "are seldom associated with true virtue.”"
+
+  - type: vocab
+    tag: "學而 1.3 · Analects 1.3"
+    words:
+      - { zh: "巧言", py: "qiǎo yán", en: "clever words" }
+      - { zh: "令色", py: "lìng sè", en: "a flattering face" }
+      - { zh: "仁", py: "rén", en: "true virtue; benevolence" }

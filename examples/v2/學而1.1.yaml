@@ -1,0 +1,43 @@
+# 論語．學而 1.1（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.1 · Analects 1.1"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「學而時習之，"
+        py: "xué ér shí xí zhī"
+        en: "“To learn and constantly practice what is learned —"
+      - zh: "不亦[說|ㄩㄝˋ]乎？"
+        py: "bù yì yuè hū"
+        en: "is it not a pleasure?"
+
+  - type: content
+    tag: "學而 1.1 · Analects 1.1"
+    lines:
+      - zh: "有朋自遠方來，"
+        py: "yǒu péng zì yuǎn fāng lái"
+        en: "To have friends coming from distant places —"
+      - zh: "不亦樂乎？"
+        py: "bù yì lè hū"
+        en: "is it not delightful?"
+
+  - type: content
+    tag: "學而 1.1 · Analects 1.1"
+    lines:
+      - zh: "人不知而不慍，"
+        py: "rén bù zhī ér bù yùn"
+        en: "To feel no resentment though others take no note of you —"
+      - zh: "不亦君子乎？」"
+        py: "bù yì jūn zǐ hū"
+        en: "is that not the mark of a true gentleman?”"
+
+  - type: vocab
+    tag: "學而 1.1 · Analects 1.1"
+    words:
+      - { zh: "學", py: "xué", en: "to learn, to study" }
+      - { zh: "朋", py: "péng", en: "a friend" }
+      - { zh: "君子", py: "jūn zǐ", en: "a gentleman; person of virtue" }

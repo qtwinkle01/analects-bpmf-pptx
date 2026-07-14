@@ -1,0 +1,54 @@
+# 論語．學而 1.10（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.10 · Analects 1.10"
+    speaker: { zh: "子禽問於子貢曰：", py: "Zǐ qín wèn yú Zǐ gòng yuē", en: "Zi Qin asked Zi Gong:" }
+    lines:
+      - zh: "「夫子至於是邦也，"
+        py: "fū zǐ zhì yú shì bāng yě"
+        en: "“When the Master arrives in any state,"
+      - zh: "必聞其政。"
+        py: "bì wén qí zhèng"
+        en: "he always hears about its government."
+
+  - type: content
+    tag: "學而 1.10 · Analects 1.10"
+    lines:
+      - zh: "求之[與:2]？"
+        py: "qiú zhī yú"
+        en: "Does he ask for this?"
+      - zh: "抑與之[與:2]？」"
+        py: "yì yǔ zhī yú"
+        en: "Or is it offered to him?”"
+
+  - type: content
+    tag: "學而 1.10 · Analects 1.10"
+    speaker: { zh: "子貢曰：", py: "Zǐ gòng yuē", en: "Zi Gong said," }
+    lines:
+      - zh: "「夫子溫、良、恭、儉、讓"
+        py: "fū zǐ wēn liáng gōng jiǎn ràng"
+        en: "“The Master is gentle, kind, respectful, frugal, and modest —"
+      - zh: "以得之。"
+        py: "yǐ dé zhī"
+        en: "that is how he gets it."
+
+  - type: content
+    tag: "學而 1.10 · Analects 1.10"
+    lines:
+      - zh: "夫子之求之也，"
+        py: "fū zǐ zhī qiú zhī yě"
+        en: "The Master's way of seeking —"
+      - zh: "其諸異乎人之求之[與:2]？」"
+        py: "qí zhū yì hū rén zhī qiú zhī yú"
+        en: "is it not different from other people's?”"
+
+  - type: vocab
+    tag: "學而 1.10 · Analects 1.10"
+    words:
+      - { zh: "溫", py: "wēn", en: "gentle, warm" }
+      - { zh: "恭", py: "gōng", en: "respectful" }
+      - { zh: "讓", py: "ràng", en: "modest, yielding" }

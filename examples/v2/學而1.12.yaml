@@ -1,0 +1,46 @@
+# 論語．學而 1.12（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.12 · Analects 1.12"
+    speaker: { zh: "有子曰：", py: "Yǒu zǐ yuē", en: "The philosopher You said," }
+    lines:
+      - zh: "「禮之用，和為貴。"
+        py: "lǐ zhī yòng hé wéi guì"
+        en: "“In the practice of ritual, harmony matters most."
+      - zh: "先王之道斯為美，"
+        py: "xiān wáng zhī dào sī wéi měi"
+        en: "This made the way of the ancient kings beautiful,"
+
+  - type: content
+    tag: "學而 1.12 · Analects 1.12"
+    lines:
+      - zh: "小大由之。"
+        py: "xiǎo dà yóu zhī"
+        en: "and they followed it in matters small and great."
+      - zh: "有所不行，"
+        py: "yǒu suǒ bù xíng"
+        en: "Yet it does not always work:"
+      - zh: "知和而和，"
+        py: "zhī hé ér hé"
+        en: "to know harmony and seek only harmony,"
+
+  - type: content
+    tag: "學而 1.12 · Analects 1.12"
+    lines:
+      - zh: "不以禮節之，"
+        py: "bù yǐ lǐ jié zhī"
+        en: "without regulating it by ritual —"
+      - zh: "亦不可行也。」"
+        py: "yì bù kě xíng yě"
+        en: "this too will not do.”"
+
+  - type: vocab
+    tag: "學而 1.12 · Analects 1.12"
+    words:
+      - { zh: "禮", py: "lǐ", en: "ritual, propriety" }
+      - { zh: "和", py: "hé", en: "harmony" }
+      - { zh: "貴", py: "guì", en: "precious, valued" }

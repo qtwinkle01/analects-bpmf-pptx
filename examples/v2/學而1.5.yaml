@@ -1,0 +1,33 @@
+# 論語．學而 1.5（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.5 · Analects 1.5"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「道千[乘:1]之國，"
+        py: "dào qiān shèng zhī guó"
+        en: "“In guiding a state of a thousand chariots,"
+      - zh: "敬事而信，"
+        py: "jìng shì ér xìn"
+        en: "attend to business with reverence and keep your word;"
+
+  - type: content
+    tag: "學而 1.5 · Analects 1.5"
+    lines:
+      - zh: "節用而愛人，"
+        py: "jié yòng ér ài rén"
+        en: "be economical in spending and love the people;"
+      - zh: "使民以時。」"
+        py: "shǐ mín yǐ shí"
+        en: "employ the people only at the proper seasons.”"
+
+  - type: vocab
+    tag: "學而 1.5 · Analects 1.5"
+    words:
+      - { zh: "國", py: "guó", en: "a state, a country" }
+      - { zh: "敬", py: "jìng", en: "reverence, respect" }
+      - { zh: "時", py: "shí", en: "the proper time, season" }

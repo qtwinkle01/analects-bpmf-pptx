@@ -1,0 +1,33 @@
+# 論語．學而 1.11（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.11 · Analects 1.11"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「父在，觀其志；"
+        py: "fù zài guān qí zhì"
+        en: "“While his father lives, observe a man's intentions;"
+      - zh: "父[沒:1]，觀其行；"
+        py: "fù mò guān qí xíng"
+        en: "when his father dies, observe his conduct."
+
+  - type: content
+    tag: "學而 1.11 · Analects 1.11"
+    lines:
+      - zh: "三年無改於父之道，"
+        py: "sān nián wú gǎi yú fù zhī dào"
+        en: "If for three years he does not change his father's way,"
+      - zh: "可謂孝矣。」"
+        py: "kě wèi xiào yǐ"
+        en: "he may be called filial.”"
+
+  - type: vocab
+    tag: "學而 1.11 · Analects 1.11"
+    words:
+      - { zh: "觀", py: "guān", en: "to observe" }
+      - { zh: "志", py: "zhì", en: "intention, aspiration" }
+      - { zh: "行", py: "xíng", en: "conduct, actions" }

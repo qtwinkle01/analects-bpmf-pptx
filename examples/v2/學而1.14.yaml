@@ -1,0 +1,40 @@
+# 論語．學而 1.14（教學簡報 v2 格式）
+# 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
+
+footer: "論語 · 學而篇 | The Analects · Book One"
+
+slides:
+  - type: content
+    tag: "學而 1.14 · Analects 1.14"
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    lines:
+      - zh: "「君子食無求飽，"
+        py: "jūn zǐ shí wú qiú bǎo"
+        en: "“A gentleman does not seek to eat his fill,"
+      - zh: "居無求安，"
+        py: "jū wú qiú ān"
+        en: "nor comfort in his dwelling;"
+
+  - type: content
+    tag: "學而 1.14 · Analects 1.14"
+    lines:
+      - zh: "敏於事而慎於言，"
+        py: "mǐn yú shì ér shèn yú yán"
+        en: "he is quick in action and careful in speech,"
+      - zh: "就有道而正焉，"
+        py: "jiù yǒu dào ér zhèng yān"
+        en: "and keeps company with the principled to correct himself —"
+
+  - type: content
+    tag: "學而 1.14 · Analects 1.14"
+    lines:
+      - zh: "可謂[好:1]學也已。」"
+        py: "kě wèi hào xué yě yǐ"
+        en: "such a man may be said to love learning.”"
+
+  - type: vocab
+    tag: "學而 1.14 · Analects 1.14"
+    words:
+      - { zh: "飽", py: "bǎo", en: "full (from eating)" }
+      - { zh: "敏", py: "mǐn", en: "quick, diligent" }
+      - { zh: "[好:1]學", py: "hào xué", en: "to love learning" }
