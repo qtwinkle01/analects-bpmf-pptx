@@ -182,6 +182,26 @@ def render_single_unit(
     return img
 
 
+def _compose_units(
+    units_with_images: list[tuple[str, Image.Image]],
+    bg_color: tuple = (255, 255, 255),
+) -> tuple[Image.Image, list[dict]]:
+    """橫向拼接各單位圖片，並回傳每個單位的 (unit, x_px, w_px) 資訊。"""
+    total_w = sum(img.width for _, img in units_with_images)
+    max_h = max((img.height for _, img in units_with_images), default=1)
+    img = Image.new("RGB", (max(total_w, 1), max(max_h, 1)), bg_color)
+
+    metrics = []
+    x = 0
+    for unit, glyph_img in units_with_images:
+        y = max_h - glyph_img.height
+        img.paste(glyph_img, (x, y))
+        metrics.append({"unit": unit, "x_px": x, "w_px": glyph_img.width})
+        x += glyph_img.width
+
+    return img, metrics
+
+
 def render_text(
     text: str,
     font_path: Path,
@@ -198,22 +218,11 @@ def render_text(
         return Image.new("RGB", (1, 1), bg_color)
 
     units = split_chars_with_ivs(text)
-    images = [
-        render_single_unit(unit, font_path, font_size, ss_feature, fg_color, bg_color)
+    pairs = [
+        (unit, render_single_unit(unit, font_path, font_size, ss_feature, fg_color, bg_color))
         for unit in units
     ]
-
-    char_gap = BPMF_CHAR_GAP if len(images) > 1 else 0
-    total_w = sum(img.width for img in images) + char_gap * max(len(images) - 1, 0)
-    max_h = max((img.height for img in images), default=1)
-    img = Image.new("RGB", (max(total_w, 1), max(max_h, 1)), bg_color)
-
-    x = 0
-    for glyph_img in images:
-        y = max_h - glyph_img.height
-        img.paste(glyph_img, (x, y))
-        x += glyph_img.width + char_gap
-
+    img, _ = _compose_units(pairs, bg_color)
     return img
 
 
@@ -240,32 +249,30 @@ def make_bpmf_image(text_or_chars, font_path: Path,
     支援傳入單字串或文字清單，其中清單可指定 char 與 ss_feature。
     """
     if isinstance(text_or_chars, list):
-        glyph_images = []
+        pairs = []
         for entry in text_or_chars:
             if not isinstance(entry, dict) or "char" not in entry:
                 raise ValueError(
                     "characters 欄位必須是 dict 清單，且每個項目需包含 'char'。"
                 )
             ss_feature_value = entry.get("ss_feature", entry.get("ss"))
-            glyph_images.append(
+            pairs.append((
+                entry["char"],
                 render_char(
                     entry["char"],
                     font_path,
                     font_size,
                     ss_feature=ss_feature_value,
-                )
-            )
-
-        char_gap = BPMF_CHAR_GAP if len(glyph_images) > 1 else 0
-        total_w = sum(img.width for img in glyph_images) + char_gap * max(len(glyph_images) - 1, 0)
-        max_h = max((img.height for img in glyph_images), default=1)
-        img = Image.new("RGB", (max(total_w, 1), max_h), (255, 255, 255))
-        x = 0
-        for glyph_img in glyph_images:
-            img.paste(glyph_img, (x, (max_h - glyph_img.height) // 2))
-            x += glyph_img.width + char_gap
+                ),
+            ))
+        img, metrics = _compose_units(pairs)
     else:
-        img = render_text(text_or_chars, font_path, font_size)
+        units = split_chars_with_ivs(text_or_chars)
+        pairs = [
+            (unit, render_single_unit(unit, font_path, font_size))
+            for unit in units
+        ]
+        img, metrics = _compose_units(pairs)
 
     buf_out = io.BytesIO()
     img.save(buf_out, format="PNG", dpi=(IMG_DPI, IMG_DPI))
@@ -278,7 +285,7 @@ def make_bpmf_image(text_or_chars, font_path: Path,
         w_emu = AVAILABLE_WIDTH
         h_emu = int(h_emu * scale_r)
 
-    return png_bytes, w_emu, h_emu
+    return png_bytes, w_emu, h_emu, metrics, img.width
 
 # ─────────────────────────────────────────────
 # XML 片段生成
@@ -329,7 +336,9 @@ def xml_run(text, underline=False, sz=SZ_PINYIN, color=COLOR_PINYIN) -> str:
     )
 
 
-def xml_textbox(shape_id, name, x, y, cx, cy, runs_xml, sz=SZ_PINYIN) -> str:
+def xml_textbox(shape_id, name, x, y, cx, cy, runs_xml, sz=SZ_PINYIN,
+                algn="l", lins=91425, rins=91425, autofit=True,
+                wrap="square") -> str:
     return (
         f'<p:sp>'
         f'<p:nvSpPr>'
@@ -343,13 +352,13 @@ def xml_textbox(shape_id, name, x, y, cx, cy, runs_xml, sz=SZ_PINYIN) -> str:
         f'<a:noFill/><a:ln><a:noFill/></a:ln>'
         f'</p:spPr>'
         f'<p:txBody>'
-        f'<a:bodyPr anchorCtr="0" anchor="t" bIns="45700" lIns="91425" '
-        f'spcFirstLastPara="1" rIns="91425" wrap="square" tIns="45700">'
-        f'<a:spAutoFit/>'
+        f'<a:bodyPr anchorCtr="0" anchor="t" bIns="45700" lIns="{lins}" '
+        f'spcFirstLastPara="1" rIns="{rins}" wrap="{wrap}" tIns="45700">'
+        f'{"<a:spAutoFit/>" if autofit else ""}'
         f'</a:bodyPr>'
         f'<a:lstStyle/>'
         f'<a:p>'
-        f'<a:pPr indent="0" lvl="0" marL="0" marR="0" rtl="0" algn="l">'
+        f'<a:pPr indent="0" lvl="0" marL="0" marR="0" rtl="0" algn="{algn}">'
         f'<a:spcBef><a:spcPts val="0"/></a:spcBef>'
         f'<a:spcAft><a:spcPts val="0"/></a:spcAft>'
         f'<a:buNone/>'
@@ -365,6 +374,82 @@ def xml_textbox(shape_id, name, x, y, cx, cy, runs_xml, sz=SZ_PINYIN) -> str:
         f'</p:txBody>'
         f'</p:sp>'
     )
+
+
+def _is_han(ch: str) -> bool:
+    cp = ord(ch)
+    return (
+        0x3400 <= cp <= 0x4DBF or
+        0x4E00 <= cp <= 0x9FFF or
+        0xF900 <= cp <= 0xFAFF or
+        0x20000 <= cp <= 0x3FFFF
+    )
+
+
+def pinyin_tokens(pinyin_list) -> list[tuple[str, bool]]:
+    """把 pinyin 設定攤平成 (token, underline) 清單，音節以空白切開。"""
+    if isinstance(pinyin_list, str):
+        return [(tok, True) for tok in pinyin_list.split()]
+    tokens = []
+    for item in pinyin_list:
+        if isinstance(item, dict):
+            if "underline" in item:
+                tokens += [(tok, True) for tok in item["underline"].split()]
+            elif "plain" in item:
+                tokens += [(tok, False) for tok in item["plain"].split()]
+        elif isinstance(item, str):
+            tokens += [(tok, True) for tok in item.split()]
+    return tokens
+
+
+def est_token_width_emu(tok: str, sz: int = SZ_PINYIN) -> int:
+    """粗估 token 在 Calibri 字型下的寬度（EMU），用於避免音節互相重疊。"""
+    em = sz * 127  # sz 單位為 1/100 pt；1pt = 12700 EMU
+    w = 0.0
+    for ch in tok:
+        c = ch.lower()
+        if c in "ijl'’ìíǐīĭ":
+            w += 0.28
+        elif c in "mw":
+            w += 0.82
+        elif c in "ftr":
+            w += 0.38
+        elif c in "?:,.\";!":
+            w += 0.30
+        elif ch.isupper():
+            w += 0.62
+        else:
+            w += 0.52
+    return int(w * em)
+
+
+def map_tokens_to_units(tokens, metrics):
+    """
+    將拼音 token 對應到中文字單位。
+    - 漢字單位依序吃 underline（音節）token
+    - 標點單位（非開頭）依序吃 plain token
+    回傳 [(token, underline, unit_metric), ...]；音節數與漢字數不符時回傳 None。
+    """
+    syllables = [t for t in tokens if t[1]]
+    plains = [t for t in tokens if not t[1]]
+    han_units = [m for m in metrics if _is_han(m["unit"][0])]
+    if len(syllables) != len(han_units):
+        return None
+
+    mapping = []
+    si = pi = 0
+    started = False
+    for m in metrics:
+        if _is_han(m["unit"][0]):
+            tok, ul = syllables[si]
+            si += 1
+            started = True
+            mapping.append((tok, ul, m))
+        elif started and pi < len(plains):
+            tok, ul = plains[pi]
+            pi += 1
+            mapping.append((tok, ul, m))
+    return mapping
 
 
 def build_pinyin_runs(pinyin_list) -> str:
@@ -430,7 +515,8 @@ class SlideBuilder:
                        y_start, gap_img_pinyin=80000,
                        gap_pinyin_english=580000) -> int:
         # 1. 注音圖片
-        png_bytes, w_emu, h_emu = make_bpmf_image(text_or_chars, self.font_path)
+        png_bytes, _, _, metrics, img_w_px = make_bpmf_image(
+            text_or_chars, self.font_path)
         rid, w_emu, h_emu = self._add_image(png_bytes, "bpmf")
         self._shapes.append(xml_pic(
             self._next_id(), f"bpmf_img_{self._shape_id}",
@@ -438,13 +524,38 @@ class SlideBuilder:
         ))
         y_pinyin = y_start + h_emu + gap_img_pinyin
 
-        # 2. 拼音
-        runs = build_pinyin_runs(pinyin_list)
-        self._shapes.append(xml_textbox(
-            self._next_id(), f"pinyin_{self._shape_id}",
-            X_MARGIN, y_pinyin, AVAILABLE_WIDTH, 584775,
-            runs, sz=SZ_PINYIN
-        ))
+        # 2. 拼音：每個音節各自置中對齊在對應中文字下方
+        mapping = None
+        if pinyin_list:
+            tokens = pinyin_tokens(pinyin_list)
+            mapping = map_tokens_to_units(tokens, metrics)
+
+        if mapping:
+            emu_per_px = w_emu / max(img_w_px, 1)
+            GAP = 100000  # 音節之間的最小間距
+            prev_end = None
+            for tok, ul, m in mapping:
+                center = X_MARGIN + int((m["x_px"] + m["w_px"] / 2) * emu_per_px)
+                tok_w = est_token_width_emu(tok)
+                x = center - tok_w // 2
+                if prev_end is not None and x < prev_end + GAP:
+                    x = prev_end + GAP  # 避免與前一個音節重疊
+                x = max(x, 0)
+                prev_end = x + tok_w
+                self._shapes.append(xml_textbox(
+                    self._next_id(), f"pinyin_{self._shape_id}",
+                    x, y_pinyin, tok_w + 300000, 584775,
+                    xml_run(tok, underline=ul), sz=SZ_PINYIN,
+                    algn="l", lins=0, rins=0, wrap="none"
+                ))
+        elif pinyin_list:
+            # 音節數與漢字數不符 → 退回整行拼音
+            runs = build_pinyin_runs(pinyin_list)
+            self._shapes.append(xml_textbox(
+                self._next_id(), f"pinyin_{self._shape_id}",
+                X_MARGIN, y_pinyin, AVAILABLE_WIDTH, 584775,
+                runs, sz=SZ_PINYIN
+            ))
         y_english = y_pinyin + gap_pinyin_english
 
         # 3. 英文
