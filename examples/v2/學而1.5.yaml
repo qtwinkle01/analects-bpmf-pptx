@@ -8,8 +8,8 @@ slides:
     tag: "學而 1.5 · Analects 1.5"
     speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
     lines:
-      - zh: "「道千[乘:1]之國，"
-        py: "dào qiān shèng zhī guó"
+      - zh: "「[道|ㄉㄠˇ]千[乘:1]之國，"
+        py: "dǎo qiān shèng zhī guó"
         en: "“In guiding a state of a thousand chariots,"
       - zh: "敬事而信，"
         py: "jìng shì ér xìn"

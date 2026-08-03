@@ -1,0 +1,1211 @@
+{
+ "學而1.1": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.1 · Analects 1.1",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「學而時習之，",
+      "py": "xué ér shí xí zhī",
+      "en": "“To learn and constantly practice what is learned —"
+     },
+     {
+      "zh": "不亦[說|ㄩㄝˋ]乎？",
+      "py": "bù yì yuè hū",
+      "en": "is it not a pleasure?"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.1 · Analects 1.1",
+    "lines": [
+     {
+      "zh": "有朋自遠方來，",
+      "py": "yǒu péng zì yuǎn fāng lái",
+      "en": "To have friends coming from distant places —"
+     },
+     {
+      "zh": "不亦樂乎？",
+      "py": "bù yì lè hū",
+      "en": "is it not delightful?"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.1 · Analects 1.1",
+    "lines": [
+     {
+      "zh": "人不知而不慍，",
+      "py": "rén bù zhī ér bù yùn",
+      "en": "To feel no resentment though others take no note of you —"
+     },
+     {
+      "zh": "不亦君子乎？」",
+      "py": "bù yì jūn zǐ hū",
+      "en": "is that not the mark of a true gentleman?”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.1 · Analects 1.1",
+    "words": [
+     {
+      "zh": "學",
+      "py": "xué",
+      "en": "to learn, to study"
+     },
+     {
+      "zh": "朋",
+      "py": "péng",
+      "en": "a friend"
+     },
+     {
+      "zh": "君子",
+      "py": "jūn zǐ",
+      "en": "a gentleman; person of virtue"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.2": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.2 · Analects 1.2",
+    "speaker": {
+     "zh": "有子曰：",
+     "py": "Yǒu zǐ yuē",
+     "en": "The philosopher You said,"
+    },
+    "lines": [
+     {
+      "zh": "「其為人也孝[弟:2]，",
+      "py": "qí wéi rén yě xiào tì",
+      "en": "“Those who are filial and respect their elders,"
+     },
+     {
+      "zh": "而[好:1]犯上者，[鮮:1]矣；",
+      "py": "ér hào fàn shàng zhě xiǎn yǐ",
+      "en": "yet love to offend against their superiors — such people are few;"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.2 · Analects 1.2",
+    "lines": [
+     {
+      "zh": "不[好:1]犯上，",
+      "py": "bù hào fàn shàng",
+      "en": "One who does not like to offend against his superiors,"
+     },
+     {
+      "zh": "而[好:1]作亂者，",
+      "py": "ér hào zuò luàn zhě",
+      "en": "and yet loves to stir up disorder —"
+     },
+     {
+      "zh": "未之有也。",
+      "py": "wèi zhī yǒu yě",
+      "en": "there has never been such a person."
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.2 · Analects 1.2",
+    "lines": [
+     {
+      "zh": "君子務本，",
+      "py": "jūn zǐ wù běn",
+      "en": "The gentleman attends to the root of things;"
+     },
+     {
+      "zh": "本立而道生。",
+      "py": "běn lì ér dào shēng",
+      "en": "when the root is established, the Way grows from it."
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.2 · Analects 1.2",
+    "lines": [
+     {
+      "zh": "孝[弟:2]也者，",
+      "py": "xiào tì yě zhě",
+      "en": "Filial piety and respect for elders —"
+     },
+     {
+      "zh": "其為仁之本[與:2]！」",
+      "py": "qí wéi rén zhī běn yú",
+      "en": "are they not the root of all benevolent action?”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.2 · Analects 1.2",
+    "words": [
+     {
+      "zh": "孝",
+      "py": "xiào",
+      "en": "filial piety"
+     },
+     {
+      "zh": "[弟:2]",
+      "py": "tì",
+      "en": "respect for elders"
+     },
+     {
+      "zh": "本",
+      "py": "běn",
+      "en": "root; foundation"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.3": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.3 · Analects 1.3",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「巧言令色，",
+      "py": "qiǎo yán lìng sè",
+      "en": "“Fine words and an insinuating appearance"
+     },
+     {
+      "zh": "[鮮:1]矣仁！」",
+      "py": "xiǎn yǐ rén",
+      "en": "are seldom associated with true virtue.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.3 · Analects 1.3",
+    "words": [
+     {
+      "zh": "巧言",
+      "py": "qiǎo yán",
+      "en": "clever words"
+     },
+     {
+      "zh": "令色",
+      "py": "lìng sè",
+      "en": "a flattering face"
+     },
+     {
+      "zh": "仁",
+      "py": "rén",
+      "en": "true virtue; benevolence"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.4": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.4 · Analects 1.4",
+    "speaker": {
+     "zh": "[曾:1]子曰：",
+     "py": "Zēng zǐ yuē",
+     "en": "Zengzi said,"
+    },
+    "lines": [
+     {
+      "zh": "「吾日三[省:1]吾身：",
+      "py": "wú rì sān xǐng wú shēn",
+      "en": "“I daily examine myself on three points:"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.4 · Analects 1.4",
+    "lines": [
+     {
+      "zh": "[為:1]人謀而不忠乎？",
+      "py": "wèi rén móu ér bù zhōng hū",
+      "en": "whether I am not faithful while I do the work for others; "
+     },
+     {
+      "zh": "與朋友交而[不:1]信乎？",
+      "py": "yǔ péng yǒu jiāo ér bú xìn hū",
+      "en": "whether I am not sincere while I interact with friends;"
+     },
+     {
+      "zh": "傳不習乎？」",
+      "py": "chuán bù xí hū",
+      "en": "whether I am not mastering and practicing the instructions from my teacher.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.4 · Analects 1.4",
+    "words": [
+     {
+      "zh": "[省:1]",
+      "py": "xǐng",
+      "en": "to examine oneself"
+     },
+     {
+      "zh": "忠",
+      "py": "zhōng",
+      "en": "faithful, loyal"
+     },
+     {
+      "zh": "信",
+      "py": "xìn",
+      "en": "sincere, trustworthy"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.5": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.5 · Analects 1.5",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「[道|ㄉㄠˇ]千[乘:1]之國，",
+      "py": "dǎo qiān shèng zhī guó",
+      "en": "“In guiding a state of a thousand chariots,"
+     },
+     {
+      "zh": "敬事而信，",
+      "py": "jìng shì ér xìn",
+      "en": "attend to business with reverence and keep your word;"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.5 · Analects 1.5",
+    "lines": [
+     {
+      "zh": "節用而愛人，",
+      "py": "jié yòng ér ài rén",
+      "en": "be economical in spending and love the people;"
+     },
+     {
+      "zh": "使民以時。」",
+      "py": "shǐ mín yǐ shí",
+      "en": "employ the people only at the proper seasons.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.5 · Analects 1.5",
+    "words": [
+     {
+      "zh": "國",
+      "py": "guó",
+      "en": "a state, a country"
+     },
+     {
+      "zh": "敬",
+      "py": "jìng",
+      "en": "reverence, respect"
+     },
+     {
+      "zh": "時",
+      "py": "shí",
+      "en": "the proper time, season"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.6": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.6 · Analects 1.6",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「弟子入則孝，",
+      "py": "dì zǐ rù zé xiào",
+      "en": "“A young man should be filial at home,"
+     },
+     {
+      "zh": "出則[弟:2]，",
+      "py": "chū zé tì",
+      "en": "and respectful to elders when away from home;"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.6 · Analects 1.6",
+    "lines": [
+     {
+      "zh": "謹而信，",
+      "py": "jǐn ér xìn",
+      "en": "careful and sincere,"
+     },
+     {
+      "zh": "汎愛眾，",
+      "py": "fàn ài zhòng",
+      "en": "overflowing with love for all,"
+     },
+     {
+      "zh": "而親仁。",
+      "py": "ér qīn rén",
+      "en": "and close to those of true virtue."
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.6 · Analects 1.6",
+    "lines": [
+     {
+      "zh": "行有餘力，",
+      "py": "xíng yǒu yú lì",
+      "en": "With energy left over after doing these things,"
+     },
+     {
+      "zh": "則以學文。」",
+      "py": "zé yǐ xué wén",
+      "en": "let him study culture and the arts.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.6 · Analects 1.6",
+    "words": [
+     {
+      "zh": "弟子",
+      "py": "dì zǐ",
+      "en": "a young man; disciple"
+     },
+     {
+      "zh": "眾",
+      "py": "zhòng",
+      "en": "everyone, the multitude"
+     },
+     {
+      "zh": "文",
+      "py": "wén",
+      "en": "culture, learning"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.7": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.7 · Analects 1.7",
+    "speaker": {
+     "zh": "子夏曰：",
+     "py": "Zǐ xià yuē",
+     "en": "Zi Xia said,"
+    },
+    "lines": [
+     {
+      "zh": "「賢賢易色，",
+      "py": "xián xián yì sè",
+      "en": "“Value virtue above beauty;"
+     },
+     {
+      "zh": "事父母能竭其力，",
+      "py": "shì fù mǔ néng jié qí lì",
+      "en": "serve your parents with all your strength;"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.7 · Analects 1.7",
+    "lines": [
+     {
+      "zh": "事君能致其身，",
+      "py": "shì jūn néng zhì qí shēn",
+      "en": "serve your ruler with your very life;"
+     },
+     {
+      "zh": "與朋友交言而有信。",
+      "py": "yǔ péng yǒu jiāo yán ér yǒu xìn",
+      "en": "keep your word with friends."
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.7 · Analects 1.7",
+    "lines": [
+     {
+      "zh": "雖曰未學，",
+      "py": "suī yuē wèi xué",
+      "en": "Though people say such a man is unlearned,"
+     },
+     {
+      "zh": "吾必謂之學矣。」",
+      "py": "wú bì wèi zhī xué yǐ",
+      "en": "I would surely call him learned.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.7 · Analects 1.7",
+    "words": [
+     {
+      "zh": "賢",
+      "py": "xián",
+      "en": "virtuous, worthy"
+     },
+     {
+      "zh": "父母",
+      "py": "fù mǔ",
+      "en": "parents"
+     },
+     {
+      "zh": "力",
+      "py": "lì",
+      "en": "strength, effort"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.8": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.8 · Analects 1.8",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「君子不重則不威，",
+      "py": "jūn zǐ bù zhòng zé bù wēi",
+      "en": "“A gentleman without gravity has no authority,"
+     },
+     {
+      "zh": "學則不固。",
+      "py": "xué zé bù gù",
+      "en": "and his learning will not be solid."
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.8 · Analects 1.8",
+    "lines": [
+     {
+      "zh": "主忠信，",
+      "py": "zhǔ zhōng xìn",
+      "en": "Hold loyalty and sincerity first;"
+     },
+     {
+      "zh": "無友不如己者，",
+      "py": "wú yǒu bù rú jǐ zhě",
+      "en": "have no friends not equal to yourself;"
+     },
+     {
+      "zh": "過則勿憚改。」",
+      "py": "guò zé wù dàn gǎi",
+      "en": "when you make a mistake, do not fear to correct it.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.8 · Analects 1.8",
+    "words": [
+     {
+      "zh": "威",
+      "py": "wēi",
+      "en": "dignity, authority"
+     },
+     {
+      "zh": "過",
+      "py": "guò",
+      "en": "a fault, a mistake"
+     },
+     {
+      "zh": "改",
+      "py": "gǎi",
+      "en": "to correct, to change"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.9": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.9 · Analects 1.9",
+    "speaker": {
+     "zh": "[曾:1]子曰：",
+     "py": "Zēng zǐ yuē",
+     "en": "The philosopher Zeng said,"
+    },
+    "lines": [
+     {
+      "zh": "「慎終追遠，",
+      "py": "shèn zhōng zhuī yuǎn",
+      "en": "“Attend carefully to funeral rites, and honor distant ancestors —"
+     },
+     {
+      "zh": "民德歸厚矣。」",
+      "py": "mín dé guī hòu yǐ",
+      "en": "then the people's virtue will grow deep again.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.9 · Analects 1.9",
+    "words": [
+     {
+      "zh": "慎",
+      "py": "shèn",
+      "en": "careful, attentive"
+     },
+     {
+      "zh": "追",
+      "py": "zhuī",
+      "en": "to trace back, to honor"
+     },
+     {
+      "zh": "德",
+      "py": "dé",
+      "en": "virtue"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.10": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.10 · Analects 1.10",
+    "speaker": {
+     "zh": "子禽問於子貢曰：",
+     "py": "Zǐ qín wèn yú Zǐ gòng yuē",
+     "en": "Zi Qin asked Zi Gong:"
+    },
+    "lines": [
+     {
+      "zh": "「夫子至於是邦也，",
+      "py": "fū zǐ zhì yú shì bāng yě",
+      "en": "“When the Master arrives in any state,"
+     },
+     {
+      "zh": "必聞其政。",
+      "py": "bì wén qí zhèng",
+      "en": "he always hears about its government."
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.10 · Analects 1.10",
+    "lines": [
+     {
+      "zh": "求之[與:2]？",
+      "py": "qiú zhī yú",
+      "en": "Does he ask for this?"
+     },
+     {
+      "zh": "抑與之[與:2]？」",
+      "py": "yì yǔ zhī yú",
+      "en": "Or is it offered to him?”"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.10 · Analects 1.10",
+    "speaker": {
+     "zh": "子貢曰：",
+     "py": "Zǐ gòng yuē",
+     "en": "Zi Gong said,"
+    },
+    "lines": [
+     {
+      "zh": "「夫子溫、良、恭、儉、讓",
+      "py": "fū zǐ wēn liáng gōng jiǎn ràng",
+      "en": "“The Master is gentle, kind, respectful, frugal, and modest —"
+     },
+     {
+      "zh": "以得之。",
+      "py": "yǐ dé zhī",
+      "en": "that is how he gets it."
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.10 · Analects 1.10",
+    "lines": [
+     {
+      "zh": "夫子之求之也，",
+      "py": "fū zǐ zhī qiú zhī yě",
+      "en": "The Master's way of seeking —"
+     },
+     {
+      "zh": "其諸異乎人之求之[與:2]？」",
+      "py": "qí zhū yì hū rén zhī qiú zhī yú",
+      "en": "is it not different from other people's?”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.10 · Analects 1.10",
+    "words": [
+     {
+      "zh": "溫",
+      "py": "wēn",
+      "en": "gentle, warm"
+     },
+     {
+      "zh": "恭",
+      "py": "gōng",
+      "en": "respectful"
+     },
+     {
+      "zh": "讓",
+      "py": "ràng",
+      "en": "modest, yielding"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.11": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.11 · Analects 1.11",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「父在，觀其志；",
+      "py": "fù zài guān qí zhì",
+      "en": "“While his father lives, observe a man's intentions;"
+     },
+     {
+      "zh": "父[沒:1]，觀其行；",
+      "py": "fù mò guān qí xíng",
+      "en": "when his father dies, observe his conduct."
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.11 · Analects 1.11",
+    "lines": [
+     {
+      "zh": "三年無改於父之道，",
+      "py": "sān nián wú gǎi yú fù zhī dào",
+      "en": "If for three years he does not change his father's way,"
+     },
+     {
+      "zh": "可謂孝矣。」",
+      "py": "kě wèi xiào yǐ",
+      "en": "he may be called filial.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.11 · Analects 1.11",
+    "words": [
+     {
+      "zh": "觀",
+      "py": "guān",
+      "en": "to observe"
+     },
+     {
+      "zh": "志",
+      "py": "zhì",
+      "en": "intention, aspiration"
+     },
+     {
+      "zh": "行",
+      "py": "xíng",
+      "en": "conduct, actions"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.12": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.12 · Analects 1.12",
+    "speaker": {
+     "zh": "有子曰：",
+     "py": "Yǒu zǐ yuē",
+     "en": "The philosopher You said,"
+    },
+    "lines": [
+     {
+      "zh": "「禮之用，和為貴。",
+      "py": "lǐ zhī yòng hé wéi guì",
+      "en": "“In the practice of ritual, harmony matters most."
+     },
+     {
+      "zh": "先王之道斯為美，",
+      "py": "xiān wáng zhī dào sī wéi měi",
+      "en": "This made the way of the ancient kings beautiful,"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.12 · Analects 1.12",
+    "lines": [
+     {
+      "zh": "小大由之。",
+      "py": "xiǎo dà yóu zhī",
+      "en": "and they followed it in matters small and great."
+     },
+     {
+      "zh": "有所不行，",
+      "py": "yǒu suǒ bù xíng",
+      "en": "Yet it does not always work:"
+     },
+     {
+      "zh": "知和而和，",
+      "py": "zhī hé ér hé",
+      "en": "to know harmony and seek only harmony,"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.12 · Analects 1.12",
+    "lines": [
+     {
+      "zh": "不以禮節之，",
+      "py": "bù yǐ lǐ jié zhī",
+      "en": "without regulating it by ritual —"
+     },
+     {
+      "zh": "亦不可行也。」",
+      "py": "yì bù kě xíng yě",
+      "en": "this too will not do.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.12 · Analects 1.12",
+    "words": [
+     {
+      "zh": "禮",
+      "py": "lǐ",
+      "en": "ritual, propriety"
+     },
+     {
+      "zh": "和",
+      "py": "hé",
+      "en": "harmony"
+     },
+     {
+      "zh": "貴",
+      "py": "guì",
+      "en": "precious, valued"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.13": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.13 · Analects 1.13",
+    "speaker": {
+     "zh": "有子曰：",
+     "py": "Yǒu zǐ yuē",
+     "en": "The philosopher You said,"
+    },
+    "lines": [
+     {
+      "zh": "「信近於義，",
+      "py": "xìn jìn yú yì",
+      "en": "“When promises accord with what is right,"
+     },
+     {
+      "zh": "言可復也；",
+      "py": "yán kě fù yě",
+      "en": "the words can be kept;"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.13 · Analects 1.13",
+    "lines": [
+     {
+      "zh": "恭近於禮，",
+      "py": "gōng jìn yú lǐ",
+      "en": "when respect accords with ritual,"
+     },
+     {
+      "zh": "[遠:1]恥辱也；",
+      "py": "yuàn chǐ rǔ yě",
+      "en": "one keeps shame and disgrace away;"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.13 · Analects 1.13",
+    "lines": [
+     {
+      "zh": "因不失其親，",
+      "py": "yīn bù shī qí qīn",
+      "en": "when one relies on those worthy of closeness,"
+     },
+     {
+      "zh": "亦可宗也。」",
+      "py": "yì kě zōng yě",
+      "en": "they can be one's guides.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.13 · Analects 1.13",
+    "words": [
+     {
+      "zh": "義",
+      "py": "yì",
+      "en": "what is right"
+     },
+     {
+      "zh": "恥辱",
+      "py": "chǐ rǔ",
+      "en": "shame, disgrace"
+     },
+     {
+      "zh": "親",
+      "py": "qīn",
+      "en": "close, intimate"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.14": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.14 · Analects 1.14",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「君子食無求飽，",
+      "py": "jūn zǐ shí wú qiú bǎo",
+      "en": "“A gentleman does not seek to eat his fill,"
+     },
+     {
+      "zh": "居無求安，",
+      "py": "jū wú qiú ān",
+      "en": "nor comfort in his dwelling;"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.14 · Analects 1.14",
+    "lines": [
+     {
+      "zh": "敏於事而慎於言，",
+      "py": "mǐn yú shì ér shèn yú yán",
+      "en": "he is quick in action and careful in speech,"
+     },
+     {
+      "zh": "就有道而正焉，",
+      "py": "jiù yǒu dào ér zhèng yān",
+      "en": "and keeps company with the principled to correct himself —"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.14 · Analects 1.14",
+    "lines": [
+     {
+      "zh": "可謂[好:1]學也已。」",
+      "py": "kě wèi hào xué yě yǐ",
+      "en": "such a man may be said to love learning.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.14 · Analects 1.14",
+    "words": [
+     {
+      "zh": "飽",
+      "py": "bǎo",
+      "en": "full (from eating)"
+     },
+     {
+      "zh": "敏",
+      "py": "mǐn",
+      "en": "quick, diligent"
+     },
+     {
+      "zh": "[好:1]學",
+      "py": "hào xué",
+      "en": "to love learning"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.15": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.15 · Analects 1.15",
+    "speaker": {
+     "zh": "子貢曰：",
+     "py": "Zǐ gòng yuē",
+     "en": "Zi Gong said,"
+    },
+    "lines": [
+     {
+      "zh": "「貧而無諂，",
+      "py": "pín ér wú chǎn",
+      "en": "“Poor yet never flattering,"
+     },
+     {
+      "zh": "富而無驕，何如？」",
+      "py": "fù ér wú jiāo hé rú",
+      "en": "rich yet never arrogant — how is that?”"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.15 · Analects 1.15",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「可也。未若貧而樂，",
+      "py": "kě yě wèi ruò pín ér lè",
+      "en": "“Good. But not as good as poor yet joyful,"
+     },
+     {
+      "zh": "富而[好:1]禮者也。」",
+      "py": "fù ér hào lǐ zhě yě",
+      "en": "or rich yet loving ritual.”"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.15 · Analects 1.15",
+    "speaker": {
+     "zh": "子貢曰：",
+     "py": "Zǐ gòng yuē",
+     "en": "Zi Gong said,"
+    },
+    "lines": [
+     {
+      "zh": "「詩云：『如切如磋，",
+      "py": "shī yún rú qiē rú cuō",
+      "en": "“The Book of Poetry says: ‘Like cutting, then filing;"
+     },
+     {
+      "zh": "如琢如磨。』",
+      "py": "rú zhuó rú mó",
+      "en": "like carving, then polishing.’"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.15 · Analects 1.15",
+    "lines": [
+     {
+      "zh": "其斯之謂[與:2]？」",
+      "py": "qí sī zhī wèi yú",
+      "en": "Is that what you mean?”"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.15 · Analects 1.15",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「賜也，",
+      "py": "sì yě",
+      "en": "“Ci (Zi Gong),"
+     },
+     {
+      "zh": "始可與言詩已矣，",
+      "py": "shǐ kě yǔ yán shī yǐ yǐ",
+      "en": "now I can discuss the Poems with you —"
+     }
+    ]
+   },
+   {
+    "type": "content",
+    "tag": "學而 1.15 · Analects 1.15",
+    "lines": [
+     {
+      "zh": "告諸往而知來者。」",
+      "py": "gào zhū wǎng ér zhī lái zhě",
+      "en": "told what has gone, you know what is to come.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.15 · Analects 1.15",
+    "words": [
+     {
+      "zh": "貧",
+      "py": "pín",
+      "en": "poor"
+     },
+     {
+      "zh": "富",
+      "py": "fù",
+      "en": "rich"
+     },
+     {
+      "zh": "驕",
+      "py": "jiāo",
+      "en": "arrogant"
+     }
+    ]
+   }
+  ]
+ },
+ "學而1.16": {
+  "footer": "論語 · 學而篇 | The Analects · Book One",
+  "slides": [
+   {
+    "type": "content",
+    "tag": "學而 1.16 · Analects 1.16",
+    "speaker": {
+     "zh": "子曰：",
+     "py": "Zǐ yuē",
+     "en": "The Master said,"
+    },
+    "lines": [
+     {
+      "zh": "「不患人之不己知，",
+      "py": "bù huàn rén zhī bù jǐ zhī",
+      "en": "“Do not worry that others do not know you;"
+     },
+     {
+      "zh": "患不知人也。」",
+      "py": "huàn bù zhī rén yě",
+      "en": "worry that you do not know others.”"
+     }
+    ]
+   },
+   {
+    "type": "vocab",
+    "tag": "學而 1.16 · Analects 1.16",
+    "words": [
+     {
+      "zh": "患",
+      "py": "huàn",
+      "en": "to worry about"
+     },
+     {
+      "zh": "知",
+      "py": "zhī",
+      "en": "to know, to understand"
+     },
+     {
+      "zh": "人",
+      "py": "rén",
+      "en": "others, people"
+     }
+    ]
+   }
+  ]
+ }
+}

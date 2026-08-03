@@ -1,0 +1,87 @@
+name: Deploy Analects web editor to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - 'examples/v2/**'
+      - 'fonts/**'
+      - '.github/workflows/deploy-web.yml'
+  pull_request:
+    paths:
+      - 'web/**'
+      - 'examples/v2/**'
+      - 'fonts/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時只跑一個部署；新的 push 進來就取消排隊中的舊的（但不中斷進行中的部署）
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # ── 1. 從 examples/v2 重建資料與精簡字型，並跑版面檢查 ──
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 安裝相依套件
+        run: pip install pyyaml fonttools brotli zopfli
+
+      - name: 從 examples/v2 重建 data/*.json 與精簡字型
+        run: |
+          python web/tools/build_assets.py \
+            --yaml-dir examples/v2 \
+            --font fonts/BpmfZihiKaiStd-Regular.ttf \
+            --out web
+
+      - name: 版面與資料檢查（拼音對齊、破音字讀音、字型缺字）
+        run: |
+          python web/tools/font_widths.py --font web/assets/bpmf-subset.ttf --out "$RUNNER_TEMP/widths.json"
+          node web/tools/check_layout.js "$RUNNER_TEMP/widths.json"
+
+      - name: 確認網站檔案齊全
+        run: |
+          set -e
+          for f in web/index.html web/css/styles.css web/js/app.js web/js/layout.js \
+                   web/js/render.js web/js/preview.js web/js/pptx.js \
+                   web/js/pptxgen.bundle.js web/assets/bpmf-subset.ttf \
+                   web/data/index.json web/data/chapters.json web/data/readings.json; do
+            [ -s "$f" ] || { echo "缺少或空白：$f"; exit 1; }
+          done
+          touch web/.nojekyll
+          echo "網站大小：$(du -sh web | cut -f1)"
+
+      - name: 移除不需要上線的檔案
+        run: rm -rf web/tools
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+  # ── 2. 部署到 GitHub Pages（PR 只驗證不部署）──
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
