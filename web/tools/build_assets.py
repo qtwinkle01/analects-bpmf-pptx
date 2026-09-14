@@ -28,7 +28,7 @@ import re
 RE_MARK = re.compile(r"\[(.)(?::(\d)|\|([^\]]+))\]")
 
 # layout.js / make_analects_deck.py 版面上寫死的中文字（不會出現在 YAML 裡），
-# 沒收進精簡字型的話網頁上會變成空白方框。
+# 沒收進精簡字型的話網頁上會改用一般字型顯示、沒有注音。
 UI_CHARS = "生詞謝"
 
 

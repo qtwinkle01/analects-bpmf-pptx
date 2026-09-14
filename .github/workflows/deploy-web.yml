@@ -59,13 +59,22 @@ jobs:
         run: |
           set -e
           for f in web/index.html web/css/styles.css web/js/app.js web/js/layout.js \
-                   web/js/render.js web/js/preview.js web/js/pptx.js web/js/yaml.js \
+                   web/js/render.js web/js/preview.js web/js/pptx.js web/js/yaml.js web/js/vocab.js \
                    web/js/pptxgen.bundle.js web/assets/bpmf-subset.ttf \
                    web/data/index.json web/data/chapters.json web/data/readings.json; do
             [ -s "$f" ] || { echo "缺少或空白：$f"; exit 1; }
           done
           touch web/.nojekyll
           echo "網站大小：$(du -sh web | cut -f1)"
+
+      # 檔案網址帶上 commit 編號（?v=xxxxxxx），瀏覽器才不會混用新舊檔案
+      - name: 加上版本號
+        run: |
+          set -e
+          V="${GITHUB_SHA::7}"
+          sed -i "s/__BUILD__/$V/g" web/index.html web/css/styles.css
+          if grep -n "__BUILD__" web/index.html web/css/styles.css; then echo "版本號替換不完整"; exit 1; fi
+          echo "版本號：$V"
 
       - name: 移除不需要上線的檔案
         run: rm -rf web/tools

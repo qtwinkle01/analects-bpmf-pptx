@@ -12,7 +12,7 @@
  *   - 拼音音節數 ≠ 漢字數（投影片上拼音會對不準漢字）
  *   - YAML 用了 [字:N] 但字型根本沒有該讀音
  *   - index.json 列了 chapters.json 沒有的章節
- *   - 精簡字型缺字（會在網頁上顯示成空白方框）
+ *   - 精簡字型缺字（網頁上會改用一般字型、沒有注音）
  *
  * 用法：
  *   python3 web/tools/font_widths.py --out /tmp/widths.json
@@ -160,6 +160,7 @@ for (const id of index.chapters) {
     };
     checkPy(sl.speaker, '（說話者）');
     (sl.lines || []).forEach((ln, k) => checkPy(ln, `（第 ${k + 1} 句）`));
+    (sl.words || []).forEach((wd, k) => checkPy(wd, `（生詞 ${k + 1}）`));
   });
 
   // 破音字標記 [字:N] 必須是字型真的有的讀音
@@ -176,7 +177,7 @@ for (const id of index.chapters) {
 }
 
 if (missing.size) {
-  errors.push(`精簡字型缺字（網頁會顯示空白方框）：${[...missing].join(' ')}　→ 請把它們加進 build_assets.py 的 UI_CHARS`);
+  errors.push(`精簡字型缺字（網頁會改用一般字型、沒有注音）：${[...missing].join(' ')}　→ 請把它們加進 build_assets.py 的 UI_CHARS`);
 }
 
 console.log(`檢查完成：${index.chapters.length} 章、${nSlides} 頁、${nOps} 個繪圖指令`);

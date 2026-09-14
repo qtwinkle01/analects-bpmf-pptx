@@ -5,7 +5,8 @@
   const $ = (s, r = document) => r.querySelector(s);
   const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
 
-  const state = { chapters: {}, order: [], readings: {}, id: null, chapter: null };
+  const state = { chapters: {}, order: [], readings: {}, id: null, chapter: null, vocab: null };
+  const BUILD = (document.querySelector('meta[name="build-version"]') || {}).content || 'dev';
   let renderer = null;
   let previewTimer = null;
   let draftTimer = null;
@@ -78,11 +79,12 @@
   // ---------- 載入 ----------
   async function loadAll() {
     const [idx, chs, rds] = await Promise.all([
-      fetch('data/index.json').then((r) => r.json()),
-      fetch('data/chapters.json').then((r) => r.json()),
-      fetch('data/readings.json').then((r) => r.json()),
+      fetch(`data/index.json?v=${BUILD}`).then((r) => r.json()),
+      fetch(`data/chapters.json?v=${BUILD}`).then((r) => r.json()),
+      fetch(`data/readings.json?v=${BUILD}`).then((r) => r.json()),
     ]);
     state.order = idx.chapters; state.chapters = chs; state.readings = rds;
+    state.vocab = window.AnalectsVocab.create(chs, idx.chapters, window.BpmfParse);
     await document.fonts.load('40px BPMF');
     await document.fonts.load('30px BPMF');
     await document.fonts.ready;
@@ -124,7 +126,8 @@
     const hint = el('div', 'editor-hint');
     hint.innerHTML =
       '點任一<b>漢字</b>可修改讀音（破音字）；<span class="legend"><span class="swatch" style="background:rgba(156,54,38,.5)"></span>有多音字型可選</span>、' +
-      '<span class="legend"><span class="swatch" style="background:rgba(47,93,124,.6)"></span>已自訂注音</span>。拼音與英文可直接在下方輸入框修改，右側即時預覽。';
+      '<span class="legend"><span class="swatch" style="background:rgba(47,93,124,.6)"></span>已自訂注音</span>。拼音與英文可直接在下方輸入框修改，右側即時預覽。' +
+      '生詞卡可直接改<b>詞語</b>，會自動帶出讀音、拼音（與已知的英文），再自行微調。';
     root.appendChild(hint);
 
     (state.chapter.slides || []).forEach((slide, si) => {
@@ -156,6 +159,21 @@
     const row = el('div', 'line-row');
     if (roleLabel) row.appendChild(el('div', 'role-tag', roleLabel));
 
+    let wordInput = null, wordField = null;
+    if (isVocab) {
+      wordField = el('div', 'field');
+      wordField.appendChild(el('label', null, '詞語'));
+      wordInput = el('input');
+      wordInput.type = 'text';
+      wordInput.value = plainZh(obj.zh);
+      wordInput.placeholder = '輸入中文詞，自動帶出讀音與拼音';
+      wordField.appendChild(wordInput);
+      const hint = el('div', 'hintmsg'); hint.style.display = 'none';
+      wordField.appendChild(hint);
+      wordField._hint = hint;
+      row.appendChild(wordField);
+    }
+
     const zhLine = el('div', 'zh-line');
     renderZhLine(zhLine, obj);
     row.appendChild(zhLine);
@@ -181,8 +199,51 @@
     enField.appendChild(enInput);
     row.appendChild(enField);
 
+    if (isVocab) {
+      enInput.placeholder = '英文解釋';
+      let timer = null, composing = false;
+      const apply = () => {
+        const val = wordInput.value.trim();
+        if (!plainZh(val) || plainZh(val) === plainZh(obj.zh)) return;
+        const s = state.vocab.suggest(val, state.id);
+        obj.zh = serialize(s.units);
+        obj.py = s.py;
+        obj.en = s.en;
+        pyInput.value = obj.py;
+        enInput.value = obj.en;
+        renderZhLine(zhLine, obj);
+        checkPy(obj, pyInput, pyField);
+        showVocabHint(wordField._hint, s);
+        changed();
+      };
+      const later = () => { clearTimeout(timer); timer = setTimeout(apply, 350); };
+      // 注音／倉頡等輸入法選字過程中不要觸發
+      wordInput.addEventListener('compositionstart', () => { composing = true; });
+      wordInput.addEventListener('compositionend', () => { composing = false; later(); });
+      wordInput.addEventListener('input', () => { if (!composing) later(); });
+    }
+
     row._zhLine = zhLine;
     return row;
+  }
+
+  const plainZh = (zh) => parseZh(zh || '').filter((u) => isHan(u.ch)).map((u) => u.ch).join('');
+
+  function showVocabHint(hint, s) {
+    const msgs = [];
+    let warn = false;
+    if (s.source === 'vocab') msgs.push(`已從「${s.from}」生詞卡帶入讀音、拼音與英文`);
+    else if (s.source === 'text') msgs.push(`已從「${s.from}」課文帶入讀音與拼音，英文請自行輸入`);
+    else if (s.source === 'chars') msgs.push('已逐字從課文帶入讀音與拼音，請確認破音字；英文請自行輸入');
+    else { msgs.push('學而篇沒有這些字的讀音資料，請手動輸入拼音與英文'); warn = true; }
+    if (s.missing.length && s.source !== 'none') { msgs.push(`「${s.missing.join('')}」找不到拼音，請手動補上`); warn = true; }
+    if (s.notInFont.length) {
+      msgs.push(`「${s.notInFont.join('')}」不在網頁字型裡，預覽與 PPT 不會有注音；下載 YAML 推上 GitHub 後網站會自動補進字型`);
+      warn = true;
+    }
+    hint.textContent = msgs.join('。');
+    hint.classList.toggle('warn', warn);
+    hint.style.display = 'block';
   }
 
   function checkPy(obj, input, field) {
