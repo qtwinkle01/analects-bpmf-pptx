@@ -33,6 +33,10 @@ import uharfbuzz as hb
 import yaml
 from PIL import Image
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 SCRIPT_DIR = Path(__file__).parent
 TEMPLATE_PPTX = SCRIPT_DIR / "template.pptx"
 FONTS_DIR = SCRIPT_DIR / "fonts"
@@ -89,8 +93,9 @@ def _patch_presentation(tmp: Path, n_slides: int) -> None:
 SLIDE_CX, SLIDE_CY = 9144000, 6858000
 X_MARGIN = 168165
 AVAIL = SLIDE_CX - X_MARGIN * 2
-IMG_DPI = 120
-F_MAIN = 100          # 主要漢字 px 大小
+IMG_SS = 3            # 超取樣倍率：注音筆畫僅 1-2px，放大檢視時會糊成淡灰而顯得偏紅
+IMG_DPI = 120 * IMG_SS
+F_MAIN = 100          # 主要漢字 px 大小（render_line 內部自動乘以 IMG_SS）
 
 # ── 色彩 ─────────────────────────────────────
 C_PAPER   = "FBF6EE"
@@ -220,19 +225,25 @@ class Renderer:
 
     def render_line(self, units: list[dict], size: int = F_MAIN,
                     fg: tuple = C_INK):
-        """渲染一行字，回傳 (RGBA img, han 字中心 x px 清單, baseline_in_img)"""
+        """渲染一行字，回傳 (RGBA img, han 字中心 x px 清單, baseline_in_img)
+
+        內部以 IMG_SS 倍解析度渲染；因 IMG_DPI 同步放大，投影片上的
+        實體尺寸不變，但注音細筆畫獲得足夠像素，放大檢視時不會淡化。
+        """
+        size = int(size * IMG_SS)
+        pad = 8 * IMG_SS
         asc, desc = self._metrics(size)
-        H = asc - desc + 16
+        H = asc - desc + pad * 2
         # 先量寬度
         widths = []
         for u in units:
             text = u["ch"] + ("\U000E01E0" if u["manual"] else "")
             glyphs = self.shape(text, size, u["feat"])
             widths.append(sum(p.x_advance / 64 for _, p in glyphs))
-        W = int(sum(widths)) + 16
+        W = int(sum(widths)) + pad * 2
         canvas = Image.new("RGBA", (max(W, 1), H), (0, 0, 0, 0))
-        baseline = 8 + asc
-        pen_x = 8.0
+        baseline = pad + asc
+        pen_x = float(pad)
         centers = []
         for u, w in zip(units, widths):
             text = u["ch"] + ("\U000E01E0" if u["manual"] else "")
@@ -246,8 +257,8 @@ class Renderer:
             pen_x += w
         bb = canvas.getbbox()
         if bb:
-            top = max(bb[1] - 8, 0)
-            bot = min(bb[3] + 8, canvas.height)
+            top = max(bb[1] - pad, 0)
+            bot = min(bb[3] + pad, canvas.height)
             canvas = canvas.crop((0, top, canvas.width, bot))
         return canvas, centers, canvas.width
 
