@@ -28,55 +28,113 @@
     ops.push({ t: 'rect', x: XM, y: emu(560000), w: AVAIL, h: emu(15000), fill: C.LINE });
   }
 
-  function footer(ops, meta) {
-    ops.push({ t: 'text', text: meta.label, x: XM, y: SLIDE_H - emu(300000),
-      w: emu(5000000), h: emu(260000), size: 10, color: C.FOOT, align: 'left', valign: 'top', cjk: true });
-    ops.push({ t: 'text', text: `${meta.idx} / ${meta.total}`, x: SLIDE_W - emu(2000000) - XM,
-      y: SLIDE_H - emu(300000), w: emu(2000000), h: emu(260000), size: 10, color: C.FOOT, align: 'right', valign: 'top' });
+  const FOOTER_Y = SLIDE_H - emu(300000);
+  const CONTENT_TOP = emu(700000);
+  const CONTENT_BOTTOM = FOOTER_Y - emu(60000);   // 課文最後一行字的底不可超過此線
+  const LINE_H = 1.18;                            // 與 preview.js 的行高一致
+  const inkH = (pt) => (pt * LINE_H) / 72;        // 單行文字實際佔的高度（英吋）
+  const halfPt = (pt) => Math.round(pt * 2) / 2;
+  const LATIN_FONT = '"Calibri","Segoe UI",Arial,sans-serif';
+  const CJK_FONT = '"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif';
+
+  // 以空白為界逐字換行；預覽與版面計算共用，確保預留的行數與畫出來的一致
+  function wrapLines(ctx, text, maxW) {
+    const words = String(text).split(/(\s+)/); // 保留空白
+    const lines = [];
+    let cur = '';
+    for (const w of words) {
+      const test = cur + w;
+      if (ctx.measureText(test).width > maxW && cur.trim()) { lines.push(cur.trimEnd()); cur = w.trimStart(); }
+      else cur = test;
+    }
+    if (cur.trim()) lines.push(cur.trimEnd());
+    return lines.length ? lines : [''];
   }
 
-  // 課文區塊：注音圖 + 對齊拼音 + 英文；回傳下一個 y
-  function block(renderer, ops, zh, py, en, y, size, compact) {
-    const r = renderer.renderLine(zh, size, C.INK);
+  // 英文在寬 boxW 吋的框內會排成幾行（量測以 pt 為單位；留 3% 餘裕給 PowerPoint 字距差異）
+  function latinLineCount(renderer, text, pt, boxW) {
+    const ctx = renderer.mctx;
+    if (!ctx) return 1;
+    ctx.font = `${pt}px ${LATIN_FONT}`;
+    return wrapLines(ctx, text, boxW * 72 * 0.97).length;
+  }
+
+  function footer(ops, meta) {
+    ops.push({ t: 'text', role: 'footer', text: meta.label, x: XM, y: FOOTER_Y,
+      w: emu(5000000), h: emu(260000), size: 10, color: C.FOOT, align: 'left', valign: 'top', cjk: true });
+    ops.push({ t: 'text', role: 'footer', text: `${meta.idx} / ${meta.total}`, x: SLIDE_W - emu(2000000) - XM,
+      y: FOOTER_Y, w: emu(2000000), h: emu(260000), size: 10, color: C.FOOT, align: 'right', valign: 'top' });
+  }
+
+  // 課文區塊：注音圖 + 對齊拼音 + 英文；k 為整體縮放（字級與間距同比例）
+  // 回傳 {next: 下一區塊的 y, bottom: 本區塊最後一行字的底}
+  function block(renderer, ops, zh, py, en, y, size, compact, k) {
+    const r = renderer.renderLine(zh, Math.round(size * k), C.INK);
     let naturalW = r.width / DPI, scale = 1, w = naturalW;
     if (naturalW > AVAIL) { scale = AVAIL / naturalW; w = AVAIL; }
     const h = (r.height / DPI) * scale;
     ops.push({ t: 'image', canvas: r.canvas, x: XM, y, w, h });
+    let bottom = y + h;
 
-    const yPy = y + h + emu(40000);
+    const pySize = halfPt(22 * k), enSize = halfPt(23 * k);
+    const yPy = y + h + emu(40000) * k;
     if (py) {
       const toks = py.trim().split(/\s+/);
       const centers = r.centers.map((cx) => XM + (cx / DPI) * scale);
       if (toks.length === centers.length) {
         toks.forEach((tok, i) => ops.push({ t: 'text', text: tok, x: centers[i] - 0.765,
-          y: yPy, w: 1.531, h: 0.437, size: 22, color: C.PINYIN, align: 'center', valign: 'top' }));
+          y: yPy, w: 1.531, h: 0.437, size: pySize, color: C.PINYIN, align: 'center', valign: 'top' }));
       } else {
         ops.push({ t: 'text', text: py, x: XM, y: yPy, w: AVAIL, h: 0.437,
-          size: 22, color: C.PINYIN, align: 'left', valign: 'top', warn: true });
+          size: pySize, color: C.PINYIN, align: 'left', valign: 'top', warn: true });
       }
+      bottom = yPy + inkH(pySize);
     }
-    const yEn = yPy + emu(430000);
+    const yEn = yPy + emu(430000) * k;
     let yNext = yEn;
     if (en) {
-      ops.push({ t: 'text', text: en, x: XM + emu(20000), y: yEn, w: AVAIL - emu(40000),
-        h: emu(700000), size: 23, color: C.ENGLISH, align: 'left', valign: 'top' });
-      yNext = yEn + (compact ? emu(430000) : emu(500000));
+      const boxW = AVAIL - emu(40000);
+      const nLines = latinLineCount(renderer, en, enSize, boxW);
+      const enH = inkH(enSize) * nLines;
+      ops.push({ t: 'text', text: en, x: XM + emu(20000), y: yEn, w: boxW,
+        h: Math.max(emu(700000), enH + 0.1), size: enSize, color: C.ENGLISH, align: 'left', valign: 'top', lines: nLines });
+      yNext = yEn + Math.max((compact ? emu(430000) : emu(500000)) * k, enH + emu(40000) * k);
+      bottom = yEn + enH;
     }
-    return yNext + (compact ? emu(60000) : emu(130000));
+    return { next: yNext + (compact ? emu(60000) : emu(130000)) * k, bottom };
   }
 
   function contentOps(cfg, renderer, meta) {
+    const lines = cfg.lines || [];
+    const nBlocks = (cfg.speaker ? 1 : 0) + lines.length;
+    const compact = nBlocks >= 3;
+
+    const layoutBody = (k) => {
+      const body = [];
+      let y = CONTENT_TOP, bottom = y, b;
+      if (cfg.speaker) {
+        b = block(renderer, body, cfg.speaker.zh, cfg.speaker.py || '', cfg.speaker.en || '', y, 84, compact, k);
+        y = b.next; bottom = b.bottom;
+      }
+      for (const ln of lines) {
+        b = block(renderer, body, ln.zh, ln.py || '', ln.en || '', y, 100, compact, k);
+        y = b.next; bottom = b.bottom;
+      }
+      return { body, bottom };
+    };
+
+    // 句子多時整頁等比例縮小，避免最後一行壓到頁尾
+    let k = 1, res = layoutBody(k);
+    for (let i = 0; i < 8 && res.bottom > CONTENT_BOTTOM && k > 0.6; i++) {
+      k = Math.max(0.6, k * ((CONTENT_BOTTOM - CONTENT_TOP) / (res.bottom - CONTENT_TOP)) * 0.99);
+      res = layoutBody(k);
+    }
+
     const ops = [];
     ops.push({ t: 'rect', x: 0, y: 0, w: SLIDE_W, h: SLIDE_H, fill: C.PAPER });
     tagAndRule(ops, cfg.tag);
     footer(ops, meta);
-    const lines = cfg.lines || [];
-    const nBlocks = (cfg.speaker ? 1 : 0) + lines.length;
-    const compact = nBlocks >= 3;
-    let y = emu(700000);
-    if (cfg.speaker) y = block(renderer, ops, cfg.speaker.zh, cfg.speaker.py || '', cfg.speaker.en || '', y, 84, compact);
-    for (const ln of lines) y = block(renderer, ops, ln.zh, ln.py || '', ln.en || '', y, 100, compact);
-    return ops;
+    return ops.concat(res.body);
   }
 
   function vocabOps(cfg, renderer, meta) {
@@ -159,5 +217,5 @@
     return contentOps(cfg, renderer, meta);
   }
 
-  global.AnalectsLayout = { buildSlideOps, SLIDE_W, SLIDE_H, COLORS: C };
+  global.AnalectsLayout = { buildSlideOps, wrapLines, SLIDE_W, SLIDE_H, FOOTER_Y, LINE_H, LATIN_FONT, CJK_FONT, COLORS: C };
 })(window);

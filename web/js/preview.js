@@ -4,19 +4,6 @@
 
   function hex(c) { return c && c[0] !== '#' && !c.startsWith('rgb') ? '#' + c : c; }
 
-  function wrapLines(ctx, text, maxW) {
-    const words = String(text).split(/(\s+)/); // 保留空白
-    const lines = [];
-    let cur = '';
-    for (const w of words) {
-      const test = cur + w;
-      if (ctx.measureText(test).width > maxW && cur.trim()) { lines.push(cur.trimEnd()); cur = w.trimStart(); }
-      else cur = test;
-    }
-    if (cur.trim()) lines.push(cur.trimEnd());
-    return lines.length ? lines : [''];
-  }
-
   // ops 單位為英吋；S = 每英吋像素
   function drawOps(ops, canvas, S) {
     const ctx = canvas.getContext('2d');
@@ -40,8 +27,8 @@
 
   function drawText(ctx, op, S) {
     const px = op.size * S / 72; // pt → px
-    const family = op.cjk ? '"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif'
-                          : '"Calibri","Segoe UI",Arial,sans-serif';
+    const L = global.AnalectsLayout;
+    const family = op.cjk ? L.CJK_FONT : L.LATIN_FONT;
     ctx.font = `${op.bold ? '700 ' : ''}${op.italic ? 'italic ' : ''}${px}px ${family}`;
     ctx.fillStyle = op.warn ? '#b23b3b' : hex(op.color);
     ctx.textAlign = op.align === 'center' ? 'center' : op.align === 'right' ? 'right' : 'left';
@@ -49,8 +36,8 @@
     let tx = boxX;
     if (op.align === 'center') tx = boxX + boxW / 2;
     else if (op.align === 'right') tx = boxX + boxW;
-    const lines = wrapLines(ctx, op.text, boxW);
-    const lh = px * 1.18;
+    const lines = L.wrapLines(ctx, op.text, boxW);
+    const lh = px * L.LINE_H;
     lines.forEach((ln, i) => ctx.fillText(ln, tx, boxY + i * lh));
   }
 

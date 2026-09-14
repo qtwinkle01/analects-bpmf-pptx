@@ -8,6 +8,61 @@
   const state = { chapters: {}, order: [], readings: {}, id: null, chapter: null };
   let renderer = null;
   let previewTimer = null;
+  let draftTimer = null;
+
+  // ---------- 草稿（自動存在這台電腦的瀏覽器裡） ----------
+  const DRAFT_PREFIX = 'analects-draft:';
+  const LAST_KEY = 'analects-last-chapter';
+  const store = {
+    get(k) { try { const v = localStorage.getItem(k); return v == null ? null : JSON.parse(v); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } },
+    del(k) { try { localStorage.removeItem(k); } catch (e) { /* 瀏覽器封鎖 storage 時略過 */ } },
+  };
+  const hasDraft = (id) => !!store.get(DRAFT_PREFIX + id);
+  const fmtTime = (t) => new Date(t).toLocaleString('zh-TW', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+  function saveDraft() {
+    clearTimeout(draftTimer);
+    draftTimer = null;
+    const id = state.id;
+    const base = JSON.stringify(state.chapters[id]);
+    if (JSON.stringify(state.chapter) === base) {
+      store.del(DRAFT_PREFIX + id);
+    } else if (!store.set(DRAFT_PREFIX + id, { data: state.chapter, base, savedAt: Date.now() })) {
+      setStatus('⚠️ 無法自動儲存，請記得下載 YAML', 'dirty');
+      return;
+    }
+    updateStatus();
+  }
+
+  function flushDraft() { if (draftTimer) saveDraft(); }
+
+  // 每次編輯都呼叫：排程存草稿 + 更新預覽
+  function changed() {
+    setStatus('儲存中…', 'dirty');
+    clearTimeout(draftTimer);
+    draftTimer = setTimeout(saveDraft, 400);
+    schedulePreview();
+  }
+
+  function setStatus(text, cls) {
+    const s = $('#saveStatus');
+    s.textContent = text;
+    s.className = 'save-status' + (cls ? ' ' + cls : '');
+  }
+
+  function updateStatus() {
+    const d = store.get(DRAFT_PREFIX + state.id);
+    if (d) setStatus(`草稿已自動儲存 ${fmtTime(d.savedAt)}・尚未寫回 YAML`, 'dirty');
+    else setStatus('與預設資料相同', '');
+    refreshChapterLabels();
+  }
+
+  function refreshChapterLabels() {
+    for (const o of $('#chapterSelect').options) {
+      o.textContent = o.value.replace('學而', '學而 ') + (hasDraft(o.value) ? '（有修改）' : '');
+    }
+  }
 
   // ---------- 破音字標記 (parse / serialize) ----------
   const parseZh = window.BpmfParse.parseZh;
@@ -36,10 +91,31 @@
 
   // ---------- 編輯器 ----------
   function selectChapter(id) {
+    flushDraft();
     state.id = id;
-    state.chapter = JSON.parse(JSON.stringify(state.chapters[id]));
+    store.set(LAST_KEY, id);
+    const base = state.chapters[id];
+    const d = store.get(DRAFT_PREFIX + id);
+    if (d && d.data && JSON.stringify(d.data) !== JSON.stringify(base)) {
+      state.chapter = JSON.parse(JSON.stringify(d.data));
+      toast(d.base !== JSON.stringify(base)
+        ? '已載入本章草稿；注意：預設資料在草稿之後有更新過，請確認'
+        : `已載入本章草稿（${fmtTime(d.savedAt)}）`);
+    } else {
+      if (d) store.del(DRAFT_PREFIX + id);   // 草稿已和預設相同（例如 YAML 已更新上線）
+      state.chapter = JSON.parse(JSON.stringify(base));
+    }
     buildEditor();
+    updateStatus();
     schedulePreview(true);
+  }
+
+  function resetChapter() {
+    flushDraft();
+    if (hasDraft(state.id) &&
+        !confirm(`確定要捨棄「${state.id}」的所有修改、還原成預設值？\n（建議先按「下載 YAML」備份）`)) return;
+    store.del(DRAFT_PREFIX + state.id);
+    selectChapter(state.id);
   }
 
   function buildEditor() {
@@ -89,7 +165,7 @@
     pyField.appendChild(el('label', null, '拼音'));
     const pyInput = el('input');
     pyInput.type = 'text'; pyInput.value = obj.py || '';
-    pyInput.addEventListener('input', () => { obj.py = pyInput.value; checkPy(obj, pyInput, pyField); schedulePreview(); });
+    pyInput.addEventListener('input', () => { obj.py = pyInput.value; checkPy(obj, pyInput, pyField); changed(); });
     pyField.appendChild(pyInput);
     const warn = el('div', 'warnmsg'); warn.style.display = 'none'; pyField.appendChild(warn);
     pyField._warn = warn; pyField._input = pyInput;
@@ -101,7 +177,7 @@
     enField.appendChild(el('label', null, '英文'));
     const enInput = el('input');
     enInput.type = 'text'; enInput.value = obj.en || '';
-    enInput.addEventListener('input', () => { obj.en = enInput.value; schedulePreview(); });
+    enInput.addEventListener('input', () => { obj.en = enInput.value; changed(); });
     enField.appendChild(enInput);
     row.appendChild(enField);
 
@@ -206,7 +282,7 @@
     units[unitIndex].manual = change.manual;
     obj.zh = serialize(units);
     renderZhLine(container, obj);
-    schedulePreview();
+    changed();
   }
 
   function closePopover() { $('#popover').classList.add('hidden'); }
@@ -222,7 +298,7 @@
       const f = el('div', 'field');
       f.appendChild(el('label', null, lbl));
       const inp = el('input'); inp.type = 'text'; inp.value = slide[k] || '';
-      inp.addEventListener('input', () => { slide[k] = inp.value; schedulePreview(); });
+      inp.addEventListener('input', () => { slide[k] = inp.value; changed(); });
       f.appendChild(inp); row.appendChild(f);
     });
     return row;
@@ -261,6 +337,17 @@
     finally { btn.disabled = false; btn.textContent = orig; }
   }
 
+  function exportYaml() {
+    flushDraft();
+    const text = window.AnalectsYaml.chapterToYaml(state.chapter, state.id);
+    const url = URL.createObjectURL(new Blob([text], { type: 'text/yaml;charset=utf-8' }));
+    const a = el('a');
+    a.href = url; a.download = `${state.id}.yaml`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    toast(`已下載 ${state.id}.yaml：覆蓋 examples/v2/${state.id}.yaml 後 push 即更新預設`);
+  }
+
   function toast(msg) {
     const t = $('#toast'); t.textContent = msg; t.classList.remove('hidden');
     clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.add('hidden'), 2600);
@@ -275,8 +362,12 @@
     state.order.forEach((id) => { const o = el('option', null, id.replace('學而', '學而 ')); o.value = id; sel.appendChild(o); });
     sel.addEventListener('change', () => selectChapter(sel.value));
     $('#downloadBtn').addEventListener('click', download);
-    $('#resetBtn').addEventListener('click', () => selectChapter(state.id));
-    const first = state.order.indexOf('學而1.5') >= 0 ? '學而1.5' : state.order[0];
+    $('#exportYamlBtn').addEventListener('click', exportYaml);
+    $('#resetBtn').addEventListener('click', resetChapter);
+    window.addEventListener('pagehide', flushDraft);
+    const last = store.get(LAST_KEY);
+    const first = state.order.includes(last) ? last
+      : state.order.indexOf('學而1.5') >= 0 ? '學而1.5' : state.order[0];
     sel.value = first;
     selectChapter(first);
   }

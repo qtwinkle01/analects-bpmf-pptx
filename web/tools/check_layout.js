@@ -68,7 +68,9 @@ function makeCtx() {
     textBaseline: '',
     measureText(t) {
       const s = parseFloat(font) || 16;
-      return { width: measure(t, s), actualBoundingBoxAscent: s * 0.8, actualBoundingBoxDescent: s * 0.1 };
+      // 字寬表只有注音字型；英文字型以平均 0.5em 估算（Calibri 實際約 0.47em，估寬一點較保守）
+      const width = font.includes('BPMF') ? measure(t, s) : Array.from(t).length * s * 0.5;
+      return { width, actualBoundingBoxAscent: s * 0.8, actualBoundingBoxDescent: s * 0.1 };
     },
     fillText() {},
     scale() {},
@@ -92,7 +94,7 @@ const index = readJson('data/index.json');
 const readings = readJson('data/readings.json');
 
 const renderer = new window.BpmfRenderer('BPMF');
-const { buildSlideOps, SLIDE_W, SLIDE_H } = window.AnalectsLayout;
+const { buildSlideOps, SLIDE_W, SLIDE_H, FOOTER_Y, LINE_H } = window.AnalectsLayout;
 const { parseZh, isHan } = window.BpmfParse;
 
 const errors = [];
@@ -123,7 +125,13 @@ for (const id of index.chapters) {
     }
     nOps += ops.length;
 
+    const hasFooter = ops.some((op) => op.role === 'footer');
     for (const op of ops) {
+      // 文字實際墨跡（單行高度）不可壓到頁尾
+      const inkBottom = op.y + ((op.lines || 1) * op.size * LINE_H) / 72;
+      if (hasFooter && op.t === 'text' && op.role !== 'footer' && inkBottom > FOOTER_Y) {
+        errors.push(`${where}：文字壓到頁尾（底 ${inkBottom.toFixed(2)}" > 頁尾 ${FOOTER_Y.toFixed(2)}"）→ "${String(op.text).slice(0, 30)}"`);
+      }
       // layout.js 在拼音音節數對不上時會標 warn，這是版面上看得出來的錯
       if (op.warn) errors.push(`${where}：拼音無法逐字對齊 → "${op.text}"`);
 

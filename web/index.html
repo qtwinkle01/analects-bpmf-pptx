@@ -17,7 +17,9 @@
       <span>章節</span>
       <select id="chapterSelect"></select>
     </label>
-    <button id="resetBtn" class="btn btn-ghost" title="還原成預設值">重設本章</button>
+    <span id="saveStatus" class="save-status"></span>
+    <button id="resetBtn" class="btn btn-ghost" title="捨棄本章修改，還原成預設值">重設本章</button>
+    <button id="exportYamlBtn" class="btn btn-ghost" title="下載修改後的 YAML，覆蓋 examples/v2 的原檔並 push 即可更新預設值">下載 YAML</button>
     <button id="downloadBtn" class="btn btn-primary">下載 PPT</button>
   </div>
 </header>
@@ -45,6 +47,7 @@
 <script src="js/layout.js"></script>
 <script src="js/preview.js"></script>
 <script src="js/pptx.js"></script>
+<script src="js/yaml.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

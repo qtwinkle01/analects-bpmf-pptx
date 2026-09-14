@@ -35,7 +35,9 @@ body {
 .brand { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-zh { font-size: 19px; font-weight: 700; color: var(--red); letter-spacing: .04em; }
 .brand-en { font-size: 12px; color: var(--foot, #9C8F7C); letter-spacing: .05em; }
-.controls { display: flex; align-items: center; gap: 10px; }
+.controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.save-status { font-size: 12px; color: #8a7c68; white-space: nowrap; }
+.save-status.dirty { color: var(--red); }
 .ctl { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #6b5f50; }
 .ctl select {
   font: inherit; padding: 7px 10px; border: 1px solid var(--border);

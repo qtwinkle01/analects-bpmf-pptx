@@ -59,7 +59,7 @@ jobs:
         run: |
           set -e
           for f in web/index.html web/css/styles.css web/js/app.js web/js/layout.js \
-                   web/js/render.js web/js/preview.js web/js/pptx.js \
+                   web/js/render.js web/js/preview.js web/js/pptx.js web/js/yaml.js \
                    web/js/pptxgen.bundle.js web/assets/bpmf-subset.ttf \
                    web/data/index.json web/data/chapters.json web/data/readings.json; do
             [ -s "$f" ] || { echo "缺少或空白：$f"; exit 1; }

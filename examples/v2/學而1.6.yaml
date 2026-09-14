@@ -6,37 +6,37 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.6 · Analects 1.6"
-    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Confucius said," }
     lines:
       - zh: "「弟子入則孝，"
         py: "dì zǐ rù zé xiào"
-        en: "“A young man should be filial at home,"
+        en: "“A youth, when at home, should be filial,"
       - zh: "出則[弟:2]，"
         py: "chū zé tì"
-        en: "and respectful to elders when away from home;"
+        en: "and, abroad, respectful to his elders."
 
   - type: content
     tag: "學而 1.6 · Analects 1.6"
     lines:
       - zh: "謹而信，"
         py: "jǐn ér xìn"
-        en: "careful and sincere,"
+        en: "He should be earnest and truthful."
       - zh: "汎愛眾，"
         py: "fàn ài zhòng"
-        en: "overflowing with love for all,"
+        en: "He should overflow in love to all,"
       - zh: "而親仁。"
         py: "ér qīn rén"
-        en: "and close to those of true virtue."
+        en: "and cultivate the friendship of the good."
 
   - type: content
     tag: "學而 1.6 · Analects 1.6"
     lines:
       - zh: "行有餘力，"
         py: "xíng yǒu yú lì"
-        en: "With energy left over after doing these things,"
+        en: "When he has time and opportunity, after practicing of these things,"
       - zh: "則以學文。」"
         py: "zé yǐ xué wén"
-        en: "let him study culture and the arts.”"
+        en: "he should employ them in polite studies.”"
 
   - type: vocab
     tag: "學而 1.6 · Analects 1.6"
