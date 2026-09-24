@@ -6,34 +6,34 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.7 · Analects 1.7"
-    speaker: { zh: "子夏曰：", py: "Zǐ xià yuē", en: "Zi Xia said," }
+    speaker: { zh: "子夏曰：", py: "Zǐ xià yuē", en: "Zixia said," }
     lines:
       - zh: "「賢賢易色，"
         py: "xián xián yì sè"
-        en: "“Value virtue above beauty;"
+        en: "“If a man withdraws his mind from pursuing the beauty of appearance, and applies it sincerely to the love of the virtuous;"
       - zh: "事父母能竭其力，"
         py: "shì fù mǔ néng jié qí lì"
-        en: "serve your parents with all your strength;"
+        en: "if, in serving his parents, he can exert his utmost strength;"
 
   - type: content
     tag: "學而 1.7 · Analects 1.7"
     lines:
       - zh: "事君能致其身，"
         py: "shì jūn néng zhì qí shēn"
-        en: "serve your ruler with your very life;"
+        en: "if, in serving his king, he can devote his life;"
       - zh: "與朋友交言而有信。"
         py: "yǔ péng yǒu jiāo yán ér yǒu xìn"
-        en: "keep your word with friends."
+        en: "if, in dealing with his friends, his words are sincere and trustworthy,"
 
   - type: content
     tag: "學而 1.7 · Analects 1.7"
     lines:
       - zh: "雖曰未學，"
         py: "suī yuē wèi xué"
-        en: "Though people say such a man is unlearned,"
+        en: "although people say that he has not learned,"
       - zh: "吾必謂之學矣。」"
         py: "wú bì wèi zhī xué yǐ"
-        en: "I would surely call him learned.”"
+        en: "I will certainly say that he has.”"
 
   - type: vocab
     tag: "學而 1.7 · Analects 1.7"

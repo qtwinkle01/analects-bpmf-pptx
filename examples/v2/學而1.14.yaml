@@ -6,31 +6,31 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.14 · Analects 1.14"
-    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "Confucius said," }
     lines:
       - zh: "「君子食無求飽，"
         py: "jūn zǐ shí wú qiú bǎo"
-        en: "“A gentleman does not seek to eat his fill,"
+        en: "“A gentleman does not seek to be full when he eats,"
       - zh: "居無求安，"
         py: "jū wú qiú ān"
-        en: "nor comfort in his dwelling;"
+        en: "nor does he seek comfort when he dwells."
 
   - type: content
     tag: "學而 1.14 · Analects 1.14"
     lines:
       - zh: "敏於事而慎於言，"
         py: "mǐn yú shì ér shèn yú yán"
-        en: "he is quick in action and careful in speech,"
+        en: "He is diligent in his work and cautious in his speech."
       - zh: "就有道而正焉，"
         py: "jiù yǒu dào ér zhèng yān"
-        en: "and keeps company with the principled to correct himself —"
+        en: "He seeks out those who possess Tao and corrects himself accordingly."
 
   - type: content
     tag: "學而 1.14 · Analects 1.14"
     lines:
       - zh: "可謂[好:1]學也已。」"
         py: "kě wèi hào xué yě yǐ"
-        en: "such a man may be said to love learning.”"
+        en: "Such a person may be called a lover of learning.”"
 
   - type: vocab
     tag: "學而 1.14 · Analects 1.14"

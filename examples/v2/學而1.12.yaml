@@ -6,37 +6,37 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.12 · Analects 1.12"
-    speaker: { zh: "有子曰：", py: "Yǒu zǐ yuē", en: "The philosopher You said," }
+    speaker: { zh: "有子曰：", py: "Yǒu zǐ yuē", en: "Youzi said," }
     lines:
       - zh: "「禮之用，和為貴。"
         py: "lǐ zhī yòng hé wéi guì"
-        en: "“In the practice of ritual, harmony matters most."
+        en: "“In the application of propriety, harmony is of the utmost value."
       - zh: "先王之道斯為美，"
         py: "xiān wáng zhī dào sī wéi měi"
-        en: "This made the way of the ancient kings beautiful,"
+        en: "And this is the beauty of Tao in the ancient kings."
 
   - type: content
     tag: "學而 1.12 · Analects 1.12"
     lines:
       - zh: "小大由之。"
         py: "xiǎo dà yóu zhī"
-        en: "and they followed it in matters small and great."
+        en: "All things, small or large, were followed in this."
       - zh: "有所不行，"
         py: "yǒu suǒ bù xíng"
-        en: "Yet it does not always work:"
+        en: "However, it is not to be observed in all cases."
       - zh: "知和而和，"
         py: "zhī hé ér hé"
-        en: "to know harmony and seek only harmony,"
+        en: "If one knows the value of harmony and pursues it"
 
   - type: content
     tag: "學而 1.12 · Analects 1.12"
     lines:
       - zh: "不以禮節之，"
         py: "bù yǐ lǐ jié zhī"
-        en: "without regulating it by ritual —"
+        en: "without regulating it with propriety,"
       - zh: "亦不可行也。」"
         py: "yì bù kě xíng yě"
-        en: "this too will not do.”"
+        en: "it is still unacceptable.”"
 
   - type: vocab
     tag: "學而 1.12 · Analects 1.12"

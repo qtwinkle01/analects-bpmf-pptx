@@ -6,27 +6,27 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.8 · Analects 1.8"
-    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "Confucius said," }
     lines:
       - zh: "「君子不重則不威，"
         py: "jūn zǐ bù zhòng zé bù wēi"
-        en: "“A gentleman without gravity has no authority,"
+        en: "“A gentleman who is not dignified will not command respect,"
       - zh: "學則不固。"
         py: "xué zé bù gù"
-        en: "and his learning will not be solid."
+        en: "and his learning will not be solid, either."
 
   - type: content
     tag: "學而 1.8 · Analects 1.8"
     lines:
       - zh: "主忠信，"
         py: "zhǔ zhōng xìn"
-        en: "Hold loyalty and sincerity first;"
+        en: "Upholding loyalty and trustworthiness,"
       - zh: "無友不如己者，"
         py: "wú yǒu bù rú jǐ zhě"
-        en: "have no friends not equal to yourself;"
+        en: "he believes none of his friends is less good than himself and learns from them."
       - zh: "過則勿憚改。」"
         py: "guò zé wù dàn gǎi"
-        en: "when you make a mistake, do not fear to correct it.”"
+        en: "Never has he hesitated to correct his mistakes.”"
 
   - type: vocab
     tag: "學而 1.8 · Analects 1.8"

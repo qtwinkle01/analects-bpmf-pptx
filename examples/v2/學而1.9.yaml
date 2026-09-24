@@ -6,14 +6,14 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.9 · Analects 1.9"
-    speaker: { zh: "[曾:1]子曰：", py: "Zēng zǐ yuē", en: "The philosopher Zeng said," }
+    speaker: { zh: "[曾:1]子曰：", py: "Zēng zǐ yuē", en: "Zengzi said," }
     lines:
       - zh: "「慎終追遠，"
         py: "shèn zhōng zhuī yuǎn"
-        en: "“Attend carefully to funeral rites, and honor distant ancestors —"
+        en: "“Attend mindfully to parents in their old age and perform their funeral rites with care. Remember the ancestors through sincere ceremonies of sacrifice."
       - zh: "民德歸厚矣。」"
         py: "mín dé guī hòu yǐ"
-        en: "then the people's virtue will grow deep again.”"
+        en: "Then, people’s virtue will resume its original depth and sincerity.”"
 
   - type: vocab
     tag: "學而 1.9 · Analects 1.9"

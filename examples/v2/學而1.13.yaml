@@ -6,34 +6,34 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.13 · Analects 1.13"
-    speaker: { zh: "有子曰：", py: "Yǒu zǐ yuē", en: "The philosopher You said," }
+    speaker: { zh: "有子曰：", py: "Yǒu zǐ yuē", en: "Youzi said," }
     lines:
       - zh: "「信近於義，"
         py: "xìn jìn yú yì"
-        en: "“When promises accord with what is right,"
+        en: "“When one’s trustworthiness is grounded in righteousness,"
       - zh: "言可復也；"
         py: "yán kě fù yě"
-        en: "the words can be kept;"
+        en: "then one’s promises can be fulfilled;"
 
   - type: content
     tag: "學而 1.13 · Analects 1.13"
     lines:
       - zh: "恭近於禮，"
         py: "gōng jìn yú lǐ"
-        en: "when respect accords with ritual,"
+        en: "when one’s reverence is grounded in propriety,"
       - zh: "[遠:1]恥辱也；"
         py: "yuàn chǐ rǔ yě"
-        en: "one keeps shame and disgrace away;"
+        en: "then one can stay far from shame and disgrace."
 
   - type: content
     tag: "學而 1.13 · Analects 1.13"
     lines:
       - zh: "因不失其親，"
         py: "yīn bù shī qí qīn"
-        en: "when one relies on those worthy of closeness,"
+        en: "Furthermore, one should not lose one’s relatives,"
       - zh: "亦可宗也。」"
         py: "yì kě zōng yě"
-        en: "they can be one's guides.”"
+        en: "and one can be respected as a successor.”"
 
   - type: vocab
     tag: "學而 1.13 · Analects 1.13"

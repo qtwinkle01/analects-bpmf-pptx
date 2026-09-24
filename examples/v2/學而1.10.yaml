@@ -6,45 +6,45 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.10 · Analects 1.10"
-    speaker: { zh: "子禽問於子貢曰：", py: "Zǐ qín wèn yú Zǐ gòng yuē", en: "Zi Qin asked Zi Gong:" }
+    speaker: { zh: "子禽問於子貢曰：", py: "Zǐ qín wèn yú Zǐ gòng yuē", en: "Ziqin asked Zigong," }
     lines:
       - zh: "「夫子至於是邦也，"
         py: "fū zǐ zhì yú shì bāng yě"
-        en: "“When the Master arrives in any state,"
+        en: "“When the Master arrives in a state,"
       - zh: "必聞其政。"
         py: "bì wén qí zhèng"
-        en: "he always hears about its government."
+        en: "he always learns about its government."
 
   - type: content
     tag: "學而 1.10 · Analects 1.10"
     lines:
       - zh: "求之[與:2]？"
         py: "qiú zhī yú"
-        en: "Does he ask for this?"
+        en: "Does he seek this information,"
       - zh: "抑與之[與:2]？」"
         py: "yì yǔ zhī yú"
-        en: "Or is it offered to him?”"
+        en: "or is it given to him?”"
 
   - type: content
     tag: "學而 1.10 · Analects 1.10"
-    speaker: { zh: "子貢曰：", py: "Zǐ gòng yuē", en: "Zi Gong said," }
+    speaker: { zh: "子貢曰：", py: "Zǐ gòng yuē", en: "Zigong replied," }
     lines:
       - zh: "「夫子溫、良、恭、儉、讓"
         py: "fū zǐ wēn liáng gōng jiǎn ràng"
-        en: "“The Master is gentle, kind, respectful, frugal, and modest —"
+        en: "“Through the virtues of gentleness, kindness, respectfulness, frugality, and humility,"
       - zh: "以得之。"
         py: "yǐ dé zhī"
-        en: "that is how he gets it."
+        en: "the Master obtains it."
 
   - type: content
     tag: "學而 1.10 · Analects 1.10"
     lines:
       - zh: "夫子之求之也，"
         py: "fū zǐ zhī qiú zhī yě"
-        en: "The Master's way of seeking —"
+        en: "Isn’t the Master’s way of seeking knowledge"
       - zh: "其諸異乎人之求之[與:2]？」"
         py: "qí zhū yì hū rén zhī qiú zhī yú"
-        en: "is it not different from other people's?”"
+        en: "different from how others seek it?”"
 
   - type: vocab
     tag: "學而 1.10 · Analects 1.10"

@@ -6,21 +6,21 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.11 · Analects 1.11"
-    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "Confucius said," }
     lines:
       - zh: "「父在，觀其志；"
         py: "fù zài guān qí zhì"
-        en: "“While his father lives, observe a man's intentions;"
+        en: "“When the father is alive, observe his intentions;"
       - zh: "父[沒:1]，觀其行；"
         py: "fù mò guān qí xíng"
-        en: "when his father dies, observe his conduct."
+        en: "when the father passes away, observe his conduct."
 
   - type: content
     tag: "學而 1.11 · Analects 1.11"
     lines:
       - zh: "三年無改於父之道，"
         py: "sān nián wú gǎi yú fù zhī dào"
-        en: "If for three years he does not change his father's way,"
+        en: "If for three years he does not deviate from the way of his father,"
       - zh: "可謂孝矣。」"
         py: "kě wèi xiào yǐ"
         en: "he may be called filial.”"

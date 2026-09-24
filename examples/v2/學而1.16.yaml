@@ -6,14 +6,14 @@ footer: "論語 · 學而篇 | The Analects · Book One"
 slides:
   - type: content
     tag: "學而 1.16 · Analects 1.16"
-    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "The Master said," }
+    speaker: { zh: "子曰：", py: "Zǐ yuē", en: "Confucius said," }
     lines:
       - zh: "「不患人之不己知，"
         py: "bù huàn rén zhī bù jǐ zhī"
-        en: "“Do not worry that others do not know you;"
+        en: "“I am not worried about others not knowing me;"
       - zh: "患不知人也。」"
         py: "huàn bù zhī rén yě"
-        en: "worry that you do not know others.”"
+        en: "I am worried about not knowing others.”"
 
   - type: vocab
     tag: "學而 1.16 · Analects 1.16"

@@ -116,6 +116,65 @@ def px_to_emu(px: float) -> int:
     return int(px / IMG_DPI * 914400)
 
 
+# ── 英文換行量測（與 web/js/layout.js 相同的規則）──────────
+# 英文用 Calibri；Linux 上找不到時改用字寬相同的 Carlito，都沒有就用估計值
+LATIN_FONT_CANDIDATES = [
+    Path(r"C:\Windows\Fonts\calibri.ttf"),
+    Path("/usr/share/fonts/truetype/crosextra/Carlito-Regular.ttf"),
+    Path("/usr/share/fonts/crosextra/Carlito-Regular.ttf"),
+    Path("/System/Library/Fonts/Supplemental/Calibri.ttf"),
+]
+LINE_H = 1.18                 # 單行文字高度 = 字級 × 1.18（與 preview.js 一致）
+_latin_face = None
+_latin_cache: dict[str, float] = {}
+
+
+def _latin_advance_em(ch: str) -> float:
+    """單一字元寬度（以 em 為單位）"""
+    global _latin_face
+    if ch in _latin_cache:
+        return _latin_cache[ch]
+    if _latin_face is None:
+        _latin_face = False
+        for fp in LATIN_FONT_CANDIDATES:
+            if fp.exists():
+                _latin_face = freetype.Face(str(fp))
+                break
+    if _latin_face:
+        _latin_face.load_char(ch, freetype.FT_LOAD_NO_SCALE)
+        w = _latin_face.glyph.advance.x / _latin_face.units_per_EM
+    else:
+        w = 0.25 if ch.isspace() else 0.5
+    _latin_cache[ch] = w
+    return w
+
+
+def latin_line_count(text: str, pt: float, box_w_emu: int) -> int:
+    """英文在寬 box_w_emu 的框內會排成幾行（以空白斷行，留 3% 餘裕）"""
+    max_w = box_w_emu / 12700 * 0.97          # EMU → pt
+    width = lambda t: sum(_latin_advance_em(c) for c in t) * pt
+    lines, cur = 0, ""
+    for w in re.split(r"(\s+)", str(text)):
+        test = cur + w
+        if width(test) > max_w and cur.strip():
+            lines += 1
+            cur = w.lstrip()
+        else:
+            cur = test
+    if cur.strip():
+        lines += 1
+    return max(lines, 1)
+
+
+def ink_h_emu(pt: float) -> int:
+    """單行文字實際佔的高度（EMU）"""
+    return int(pt * LINE_H * 12700)
+
+
+def half_pt(pt: float) -> float:
+    return round(pt * 2) / 2
+
+
 def _is_han(ch: str) -> bool:
     return "一" <= ch <= "鿿"
 
@@ -397,23 +456,34 @@ class Slide:
                                        xml_run(text, sz, color, bold=bold),
                                        algn=algn, wrap=wrap))
 
-    def block(self, zh, py, en, y, fg=C_INK, size=F_MAIN, compact=False):
-        """課文區塊：漢字圖 + 對齊拼音 + 英文，回傳下一個 y"""
-        img, centers, _ = self.r.render_line(parse_zh(zh), size, fg)
+    def block(self, zh, py, en, y, fg=C_INK, size=F_MAIN, compact=False,
+              k=1.0):
+        """課文區塊：漢字圖 + 對齊拼音 + 英文。
+        k 為整頁縮放比例（字級與間距同比例縮小）。
+        回傳 (下一區塊的 y, 本區塊最後一行字的底)"""
+        img, centers, _ = self.r.render_line(parse_zh(zh), round(size * k), fg)
         w_emu, h_emu, scale = self.add_image(img, X_MARGIN, y)
-        y_py = y + h_emu + 40000
+        bottom = y + h_emu
+        py_pt, en_pt = half_pt(22 * k), half_pt(23 * k)
+        y_py = y + h_emu + int(40000 * k)
         if py:
-            self.pinyin_tokens(py, centers, X_MARGIN, scale, y_py)
-            y_en = y_py + 430000
-        else:
-            y_en = y_py
+            self.pinyin_tokens(py, centers, X_MARGIN, scale, y_py,
+                               sz=int(py_pt * 100))
+            bottom = y_py + ink_h_emu(py_pt)
+        # 與 web 版相同：有沒有拼音都從同一高度起排英文
+        y_en = y_py + int(430000 * k)
+        y_next = y_en
         if en:
-            self.text_line(en, X_MARGIN + 20000, y_en, AVAIL - 40000,
-                           2300, C_ENGLISH, h=700000)
-            y_next = y_en + (430000 if compact else 500000)
-        else:
-            y_next = y_en
-        return y_next + (60000 if compact else 130000)
+            box_w = AVAIL - 40000
+            n_lines = latin_line_count(en, en_pt, box_w)
+            en_h = ink_h_emu(en_pt) * n_lines
+            self.text_line(en, X_MARGIN + 20000, y_en, box_w,
+                           int(en_pt * 100), C_ENGLISH,
+                           h=max(700000, en_h + 91440))
+            y_next = y_en + max(int((430000 if compact else 500000) * k),
+                                en_h + int(40000 * k))
+            bottom = y_en + en_h
+        return y_next + int((60000 if compact else 130000) * k), bottom
 
     def centered_block(self, zh, py, en, y, fg=C_INK, size=F_MAIN,
                        py_sz=2600, en_sz=2400):
@@ -495,16 +565,38 @@ def make_content(s: Slide, cfg, label, idx, total):
     lines = cfg.get("lines", [])
     n_blocks = (1 if cfg.get("speaker") else 0) + len(lines)
     compact = n_blocks >= 3
-    y = 700000
     sp = cfg.get("speaker")
-    if sp:
-        y = s.block(sp["zh"], sp.get("py", ""), sp.get("en", ""), y,
-                    fg=C_INK, size=84, compact=compact)
-    for ln in lines:
-        y = s.block(ln["zh"], ln.get("py", ""), ln.get("en", ""), y,
-                    compact=compact)
-    if y > SLIDE_CY - 250000:
-        print(f"⚠️  投影片 {idx} 內容可能超出頁面（y={y}）")
+    top = 700000
+    content_bottom = SLIDE_CY - 300000 - 60000   # 頁尾上緣再留一點空
+
+    def layout(k):
+        """在一張空白暫存頁上排版，回傳 (暫存頁, 最後一行字的底)"""
+        tmp = Slide(s.r)
+        tmp._sid, tmp._rid = s._sid, s._rid
+        tmp.shapes, tmp.rels = list(s.shapes), list(s.rels)
+        tmp.media, tmp._img_n = dict(s.media), s._img_n
+        y, bottom = top, top
+        if sp:
+            y, bottom = tmp.block(sp["zh"], sp.get("py", ""), sp.get("en", ""),
+                                  y, fg=C_INK, size=84, compact=compact, k=k)
+        for ln in lines:
+            y, bottom = tmp.block(ln["zh"], ln.get("py", ""), ln.get("en", ""),
+                                  y, compact=compact, k=k)
+        return tmp, bottom
+
+    # 英文太長換行、塞不下時，整頁等比例縮小（與 web 版相同，最小 0.6 倍）
+    k = 1.0
+    tmp, bottom = layout(k)
+    for _ in range(8):
+        if bottom <= content_bottom or k <= 0.6:
+            break
+        k = max(0.6, k * (content_bottom - top) / (bottom - top) * 0.99)
+        tmp, bottom = layout(k)
+    s.__dict__.update(tmp.__dict__)
+    if k < 1:
+        print(f"ℹ️  投影片 {idx} 內容較多，整頁縮小為 {k:.0%}")
+    if bottom > content_bottom:
+        print(f"⚠️  投影片 {idx} 縮到 60% 仍超出頁面，請把句子拆到下一頁")
 
 
 def make_vocab(s: Slide, cfg, label, idx, total):
