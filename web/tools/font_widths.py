@@ -7,7 +7,7 @@ Node 沒有 canvas，無法量測文字寬度。本工具用 fontTools 讀出精
 用純運算模擬 canvas 的 measureText()。
 
     python3 web/tools/font_widths.py \
-        --font web/assets/bpmf-subset.ttf \
+        --font web/assets/bpmf-subset.woff2 \
         --out  /tmp/widths.json
 """
 import argparse
@@ -20,7 +20,7 @@ from fontTools.ttLib import TTFont
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
     ap = argparse.ArgumentParser(description="匯出字寬表供版面測試使用")
-    ap.add_argument("--font", default=os.path.join(here, "..", "assets", "bpmf-subset.ttf"))
+    ap.add_argument("--font", default=os.path.join(here, "..", "assets", "bpmf-subset.woff2"))
     ap.add_argument("--out", default=os.path.join(here, ".widths.json"))
     args = ap.parse_args()
 

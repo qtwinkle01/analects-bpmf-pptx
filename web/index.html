@@ -2,55 +2,39 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>論語投影片編輯器 · Analects Slide Editor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>論語投影片 · Analects Slides</title>
+<meta name="description" content="論語各章的注音、拼音、英文教學投影片，可在網頁上修改後下載 PowerPoint。Zhuyin, pinyin and English slides for every chapter of the Analects.">
 <!-- __BUILD__ 由部署 workflow 換成 commit 編號，讓瀏覽器每次部署都抓新檔 -->
 <meta name="build-version" content="__BUILD__">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%239C3626%22/%3E%3Ctext x=%2232%22 y=%2246%22 font-size=%2238%22 text-anchor=%22middle%22 fill=%22%23FBF6EE%22%3E%E8%AB%96%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/styles.css?v=__BUILD__">
 </head>
-<body>
+<!-- 老師版：目錄 → 篇 → 章（預覽、下載、在網頁上修改），中文／English 介面 -->
+<body data-mode="teacher">
 <header class="topbar">
-  <div class="brand">
-    <span class="brand-zh">論語投影片編輯器</span>
-    <span class="brand-en">Analects Slide Editor</span>
-  </div>
-  <div class="controls">
-    <label class="ctl">
-      <span>章節</span>
-      <select id="chapterSelect"></select>
-    </label>
-    <span id="saveStatus" class="save-status"></span>
-    <button id="resetBtn" class="btn btn-ghost" title="捨棄本章修改，還原成預設值">重設本章</button>
-    <button id="exportYamlBtn" class="btn btn-ghost" title="下載修改後的 YAML，覆蓋 examples/v2 的原檔並 push 即可更新預設值">下載 YAML</button>
-    <button id="downloadBtn" class="btn btn-primary">下載 PPT</button>
-  </div>
+  <a class="brand" id="brand" href="#/"></a>
+  <nav class="crumbs" id="crumbs" aria-label="breadcrumb"></nav>
+  <div class="top-right" id="topRight"></div>
 </header>
 
-<main class="layout">
-  <section class="editor" id="editor">
-    <div class="loading">載入中…</div>
-  </section>
-  <section class="preview-pane">
-    <div class="preview-head">
-      <span>即時預覽</span>
-      <span class="hint">下載的 PPT 會與此一致</span>
-    </div>
-    <div id="preview" class="preview-scroll"></div>
-  </section>
-</main>
+<main id="main"><p class="loading">載入中… Loading…</p></main>
 
-<!-- 破音字讀音選單（浮動） -->
+<footer class="site-footer" id="footer"></footer>
+
+<!-- 破音字讀音選單（浮動）與提示訊息 -->
 <div id="popover" class="popover hidden"></div>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
-<div id="toast" class="toast hidden"></div>
-
-<script src="js/pptxgen.bundle.js?v=__BUILD__"></script>
+<script src="js/i18n.js?v=__BUILD__"></script>
 <script src="js/render.js?v=__BUILD__"></script>
 <script src="js/layout.js?v=__BUILD__"></script>
 <script src="js/preview.js?v=__BUILD__"></script>
-<script src="js/pptx.js?v=__BUILD__"></script>
-<script src="js/yaml.js?v=__BUILD__"></script>
+<script src="js/data.js?v=__BUILD__"></script>
 <script src="js/vocab.js?v=__BUILD__"></script>
-<script src="js/app.js?v=__BUILD__"></script>
+<script src="js/yaml.js?v=__BUILD__"></script>
+<script src="js/pptx.js?v=__BUILD__"></script>
+<script src="js/editor.js?v=__BUILD__"></script>
+<script src="js/site.js?v=__BUILD__"></script>
 </body>
 </html>

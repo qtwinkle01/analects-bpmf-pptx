@@ -34,7 +34,8 @@
   const LINE_H = 1.18;                            // 與 preview.js 的行高一致
   const inkH = (pt) => (pt * LINE_H) / 72;        // 單行文字實際佔的高度（英吋）
   const halfPt = (pt) => Math.round(pt * 2) / 2;
-  const LATIN_FONT = '"Calibri","Segoe UI",Arial,sans-serif';
+  // Carlito 與 Calibri 字寬完全相同（Linux／CI 上沒有 Calibri 時用它量英文換行，結果與 PowerPoint 一致）
+  const LATIN_FONT = '"Calibri","Carlito","Segoe UI",Arial,sans-serif';
   const CJK_FONT = '"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif';
 
   // 以空白為界逐字換行；預覽與版面計算共用，確保預留的行數與畫出來的一致

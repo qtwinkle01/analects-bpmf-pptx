@@ -1,4 +1,126 @@
 {
+ "books": [
+  {
+   "num": 1,
+   "zh": "學而",
+   "py": "Xué ér",
+   "en": "Book One"
+  },
+  {
+   "num": 2,
+   "zh": "為政",
+   "py": "Wéi zhèng",
+   "en": "Book Two"
+  },
+  {
+   "num": 3,
+   "zh": "八佾",
+   "py": "Bā yì",
+   "en": "Book Three"
+  },
+  {
+   "num": 4,
+   "zh": "里仁",
+   "py": "Lǐ rén",
+   "en": "Book Four"
+  },
+  {
+   "num": 5,
+   "zh": "公冶長",
+   "py": "Gōng yě cháng",
+   "en": "Book Five"
+  },
+  {
+   "num": 6,
+   "zh": "雍也",
+   "py": "Yōng yě",
+   "en": "Book Six"
+  },
+  {
+   "num": 7,
+   "zh": "述而",
+   "py": "Shù ér",
+   "en": "Book Seven"
+  },
+  {
+   "num": 8,
+   "zh": "泰伯",
+   "py": "Tài bó",
+   "en": "Book Eight"
+  },
+  {
+   "num": 9,
+   "zh": "子罕",
+   "py": "Zǐ hǎn",
+   "en": "Book Nine"
+  },
+  {
+   "num": 10,
+   "zh": "鄉黨",
+   "py": "Xiāng dǎng",
+   "en": "Book Ten"
+  },
+  {
+   "num": 11,
+   "zh": "先進",
+   "py": "Xiān jìn",
+   "en": "Book Eleven"
+  },
+  {
+   "num": 12,
+   "zh": "顏淵",
+   "py": "Yán yuān",
+   "en": "Book Twelve"
+  },
+  {
+   "num": 13,
+   "zh": "子路",
+   "py": "Zǐ lù",
+   "en": "Book Thirteen"
+  },
+  {
+   "num": 14,
+   "zh": "憲問",
+   "py": "Xiàn wèn",
+   "en": "Book Fourteen"
+  },
+  {
+   "num": 15,
+   "zh": "衛靈公",
+   "py": "Wèi líng gōng",
+   "en": "Book Fifteen"
+  },
+  {
+   "num": 16,
+   "zh": "季氏",
+   "py": "Jì shì",
+   "en": "Book Sixteen"
+  },
+  {
+   "num": 17,
+   "zh": "陽貨",
+   "py": "Yáng huò",
+   "en": "Book Seventeen"
+  },
+  {
+   "num": 18,
+   "zh": "微子",
+   "py": "Wéi zǐ",
+   "en": "Book Eighteen"
+  },
+  {
+   "num": 19,
+   "zh": "子張",
+   "py": "Zǐ zhāng",
+   "en": "Book Nineteen"
+  },
+  {
+   "num": 20,
+   "zh": "堯曰",
+   "py": "Yáo yuē",
+   "en": "Book Twenty"
+  }
+ ],
  "chapters": [
   "學而1.1",
   "學而1.2",
@@ -16,5 +138,119 @@
   "學而1.14",
   "學而1.15",
   "學而1.16"
- ]
+ ],
+ "meta": {
+  "學而1.1": {
+   "book": 1,
+   "ch": 1,
+   "status": "reviewed",
+   "first_zh": "子曰：「學而時習之，",
+   "first_en": "The Master said, “To learn and constantly practice what is learned —"
+  },
+  "學而1.2": {
+   "book": 1,
+   "ch": 2,
+   "status": "reviewed",
+   "first_zh": "有子曰：「其為人也孝弟，",
+   "first_en": "The philosopher You said, “Those who are filial and respect their elders,"
+  },
+  "學而1.3": {
+   "book": 1,
+   "ch": 3,
+   "status": "reviewed",
+   "first_zh": "子曰：「巧言令色，",
+   "first_en": "The Master said, “Fine words and an insinuating appearance"
+  },
+  "學而1.4": {
+   "book": 1,
+   "ch": 4,
+   "status": "reviewed",
+   "first_zh": "曾子曰：「吾日三省吾身：",
+   "first_en": "Zengzi said, “I daily examine myself on three points:"
+  },
+  "學而1.5": {
+   "book": 1,
+   "ch": 5,
+   "status": "reviewed",
+   "first_zh": "子曰：「道千乘之國，",
+   "first_en": "Confucius said, “To lead a country of a thousand chariots,"
+  },
+  "學而1.6": {
+   "book": 1,
+   "ch": 6,
+   "status": "reviewed",
+   "first_zh": "子曰：「弟子入則孝，",
+   "first_en": "Confucius said, “A disciple should practice filial piety when at home,"
+  },
+  "學而1.7": {
+   "book": 1,
+   "ch": 7,
+   "status": "reviewed",
+   "first_zh": "子夏曰：「賢賢易色，",
+   "first_en": "Zixia said, “If a man withdraws his mind from pursuing the beauty of appearance, and applies it sincerely to the love of the virtuous;"
+  },
+  "學而1.8": {
+   "book": 1,
+   "ch": 8,
+   "status": "draft",
+   "first_zh": "子曰：「君子不重則不威，",
+   "first_en": "Confucius said, “A gentleman who is not dignified will not command respect,"
+  },
+  "學而1.9": {
+   "book": 1,
+   "ch": 9,
+   "status": "draft",
+   "first_zh": "曾子曰：「慎終追遠，",
+   "first_en": "Zengzi said, “Attend mindfully to parents in their old age and perform their funeral rites with care. Remember the ancestors through sincere ceremonies of sacrifice."
+  },
+  "學而1.10": {
+   "book": 1,
+   "ch": 10,
+   "status": "draft",
+   "first_zh": "子禽問於子貢曰：「夫子至於是邦也，",
+   "first_en": "Ziqin asked Zigong, “When the Master arrives in a state,"
+  },
+  "學而1.11": {
+   "book": 1,
+   "ch": 11,
+   "status": "draft",
+   "first_zh": "子曰：「父在，觀其志；",
+   "first_en": "Confucius said, “When the father is alive, observe his intentions;"
+  },
+  "學而1.12": {
+   "book": 1,
+   "ch": 12,
+   "status": "draft",
+   "first_zh": "有子曰：「禮之用，和為貴。",
+   "first_en": "Youzi said, “In the application of propriety, harmony is of the utmost value."
+  },
+  "學而1.13": {
+   "book": 1,
+   "ch": 13,
+   "status": "draft",
+   "first_zh": "有子曰：「信近於義，",
+   "first_en": "Youzi said, “When one’s trustworthiness is grounded in righteousness,"
+  },
+  "學而1.14": {
+   "book": 1,
+   "ch": 14,
+   "status": "draft",
+   "first_zh": "子曰：「君子食無求飽，",
+   "first_en": "Confucius said, “A gentleman does not seek to be full when he eats,"
+  },
+  "學而1.15": {
+   "book": 1,
+   "ch": 15,
+   "status": "draft",
+   "first_zh": "子貢曰：「貧而無諂，",
+   "first_en": "Zigong asked, “What do you think of a person who is poor but not obsequious,"
+  },
+  "學而1.16": {
+   "book": 1,
+   "ch": 16,
+   "status": "draft",
+   "first_zh": "子曰：「不患人之不己知，",
+   "first_en": "Confucius said, “I am not worried about others not knowing me;"
+  }
+ }
 }

@@ -1,18 +1,19 @@
-/* yaml.js — 把章節資料輸出成與 examples/v2/*.yaml 相同格式的 YAML
- * 下載後直接覆蓋 examples/v2/<章節>.yaml 並 push，CI 會重建網站預設值。
- * 字串一律用雙引號（JSON 字串即合法的 YAML 雙引號字串）。
+/* yaml.js — 章節資料 ⇄ YAML（與 examples/v2/*.yaml 相同格式）
+ * 匯出：字串一律用雙引號（JSON 字串即合法的 YAML 雙引號字串），下載後可直接覆蓋 examples/v2/<章節>.yaml。
+ * 匯入：用 js-yaml（js/vendor/js-yaml.min.js，第一次匯入時才載入）。
  */
 (function (global) {
   'use strict';
 
-  const FLOW_ITEM_KEYS = new Set(['words']);   // 這些清單的每一項寫成一行 { ... }
+  const FLOW_ITEM_KEYS = new Set(['words']);        // 這些清單的每一項寫成一行 { ... }
+  const BARE_KEYS = new Set(['type', 'status']);     // 這些欄位的值不加引號
 
   const isObj = (v) => v != null && typeof v === 'object' && !Array.isArray(v);
   const isFlat = (o) => Object.values(o).every((v) => v == null || typeof v !== 'object');
 
   function scalar(key, v) {
     if (typeof v === 'number' || typeof v === 'boolean') return String(v);
-    if (key === 'type' && /^[a-z]+$/.test(v)) return v;
+    if (BARE_KEYS.has(key) && /^[a-z]+$/.test(v)) return v;
     return JSON.stringify(String(v));
   }
 
@@ -68,5 +69,39 @@
     return out.join('\n') + '\n';
   }
 
-  global.AnalectsYaml = { chapterToYaml };
+  function loadLib() {
+    if (global.jsyaml) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      const v = (document.querySelector('meta[name="build-version"]') || {}).content || 'dev';
+      s.src = `js/vendor/js-yaml.min.js?v=${v}`;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('js-yaml 載入失敗'));
+      document.head.appendChild(s);
+    });
+  }
+
+  /** 解析 YAML 文字 → 章節物件；格式不對就丟出錯誤 */
+  async function parse(text) {
+    await loadLib();
+    const data = global.jsyaml.load(text);
+    if (!isObj(data) || !Array.isArray(data.slides)) throw new Error(global.I18N ? I18N.t('notChapter') : 'no slides');
+    for (const sl of data.slides) {
+      if (!isObj(sl)) throw new Error('slides 裡有不是物件的項目');
+      for (const k of ['lines', 'words']) if (sl[k] != null && !Array.isArray(sl[k])) throw new Error(`${k} 必須是清單`);
+    }
+    return data;
+  }
+
+  /** 從檔名或檔頭註解猜出章節 ID（學而1.6.yaml、學而1.6 (1).yaml、# 論語．學而 1.6…） */
+  function guessId(filename, text) {
+    const ids = [];
+    const base = String(filename || '').replace(/\.(ya?ml|txt)$/i, '').replace(/\s*\(\d+\)$/, '').trim();
+    if (base) ids.push(base);
+    const m = /^#\s*論語．(\D+?)\s*(\d+\.\d+)/m.exec(text || '');
+    if (m) ids.push(m[1] + m[2]);
+    return ids;
+  }
+
+  global.AnalectsYaml = { chapterToYaml, parse, guessId };
 })(window);

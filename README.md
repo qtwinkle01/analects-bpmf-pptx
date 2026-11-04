@@ -10,6 +10,9 @@
 | **v2（推薦）** | `make_analects_deck.py` | 設計版：紙色背景、章節標籤、生詞卡片、拼音逐字對齊、精簡破音字語法 |
 | v1（舊版） | `make_analects_pptx.py` | 原始版面（白底、拼音帶底線），保留供參考 |
 
+另有**網站**（`web/`，自動部署到 GitHub Pages）：老師版可以在瀏覽器裡預覽、修改、下載每一章或整篇的 PPT（中文／English 介面）；
+開發者版用來校對與維護資料。網站與 v2 產生器讀同一份 `examples/v2/*.yaml`，詳見 [web/README.md](web/README.md)。
+
 ---
 
 ## v2 產生器（make_analects_deck.py）
@@ -42,7 +45,8 @@ python make_analects_deck.py --config examples/v2/學而1.4.yaml --output 學而
 ```
 
 `examples/v2/` 內含**學而篇全部 16 章**（學而1.1.yaml ～ 學而1.16.yaml），
-每章一檔：課文投影片（注音＋對齊拼音＋Legge 英譯）＋一頁重點生詞卡。
+每章一檔：課文投影片（注音＋對齊拼音＋Legge 英譯）＋一頁重點生詞卡；
+檔名是「篇名＋篇號.章號」，篇名與篇號要和同資料夾的 `books.yaml`（二十篇篇名表）一致。
 另有 `examples/學而1.1-1.3_v2.yaml` 為含標題頁／介紹頁／結尾頁的合輯範例。
 
 ### 破音字語法
@@ -73,12 +77,13 @@ python make_analects_deck.py --config examples/v2/學而1.4.yaml --output 學而
 | 論（論語） | ㄌㄨㄣˊ lún | `[論:1]` |
 
 > 注意：讀音順序依字型版本而定，新增破音字時建議先渲染確認。
-> 另「賜」台灣標準注音為ㄙˋ，拼音對應寫 `sì`。
+> 拼音一律依台灣標準讀音（與投影片上的注音一致），例如「賜」ㄙˋ寫 `sì`、「辱」ㄖㄨˋ寫 `rù`。
 
 ### YAML 格式（v2）
 
 ```yaml
 footer: "論語 · 學而篇 | The Analects · Book One"   # 頁尾文字（選填）
+status: reviewed                                   # 校對狀態：reviewed＝已校對、draft＝待校對（網站用）
 
 slides:
   # ── 課文投影片 ──
@@ -142,7 +147,7 @@ python make_analects_pptx.py --config examples/學而1.4.yaml   # YAML 設定檔
 ## 資料夾結構
 
 ```
-analects_pptx/
+analects-bpmf-pptx/
 ├── make_analects_deck.py        # v2 產生器（推薦）
 ├── make_analects_pptx.py        # v1 產生器（舊版）
 ├── template.pptx                # 版面範本（必須保留）
@@ -150,11 +155,15 @@ analects_pptx/
 │   └── BpmfZihiKaiStd-Regular.ttf   # BPMFVs 注音字型
 ├── examples/
 │   ├── v2/                      # ★ 學而篇全 16 章（v2 格式，每章一檔）
+│   │   ├── books.yaml           # 二十篇篇名表（篇號、篇名、拼音、英文）
 │   │   ├── 學而1.1.yaml … 學而1.16.yaml
 │   ├── 學而1.1-1.3_v2.yaml      # v2 合輯範例（含標題／介紹／結尾頁）
 │   ├── 學而1.4.yaml             # v1 格式範例
 │   ├── 學而1.4_characters.yaml  # v1 逐字格式範例
 │   └── …
+├── web/                         # 網站（老師版 index.html、開發者版 edit.html），見 web/README.md
+├── .github/workflows/
+│   └── deploy-web.yml           # 網站自動檢查、產生 PPT、部署到 GitHub Pages
 └── README.md
 ```
 
