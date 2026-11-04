@@ -2,6 +2,7 @@
 # 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
 
 footer: "論語 · 學而篇 | The Analects · Book One"
+status: draft
 
 slides:
   - type: content
@@ -22,7 +23,7 @@ slides:
         py: "gōng jìn yú lǐ"
         en: "when one’s reverence is grounded in propriety,"
       - zh: "[遠:1]恥辱也；"
-        py: "yuàn chǐ rǔ yě"
+        py: "yuàn chǐ rù yě"
         en: "then one can stay far from shame and disgrace."
 
   - type: content
@@ -39,5 +40,5 @@ slides:
     tag: "學而 1.13 · Analects 1.13"
     words:
       - { zh: "義", py: "yì", en: "what is right" }
-      - { zh: "恥辱", py: "chǐ rǔ", en: "shame, disgrace" }
+      - { zh: "恥辱", py: "chǐ rù", en: "shame, disgrace" }
       - { zh: "親", py: "qīn", en: "close, intimate" }

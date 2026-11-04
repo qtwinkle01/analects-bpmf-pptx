@@ -11,7 +11,7 @@
  *   - 版面計算丟例外、座標算出 NaN
  *   - 拼音音節數 ≠ 漢字數（投影片上拼音會對不準漢字）
  *   - YAML 用了 [字:N] 但字型根本沒有該讀音
- *   - index.json 列了 chapters.json 沒有的章節
+ *   - index.json 列了 chapters.json 沒有的章節、篇名表不是 20 篇、status 不是 draft／reviewed
  *   - 精簡字型缺字（網頁上會改用一般字型、沒有注音）
  *
  * 用法：
@@ -104,11 +104,20 @@ let nOps = 0;
 
 const RE_MARK_G = /\[(.)(?::(\d)|\|([^\]]+))\]/g;
 
+const bookNums = new Set((index.books || []).map((b) => b.num));
+if (bookNums.size !== 20) errors.push(`index.json 的篇名表應有 20 篇，現在是 ${bookNums.size} 篇`);
+
 for (const id of index.chapters) {
   const cfg = chapters[id];
   if (!cfg) {
     errors.push(`${id}：index.json 有列，但 chapters.json 找不到`);
     continue;
+  }
+  const meta = (index.meta || {})[id];
+  if (!meta) errors.push(`${id}：index.json 缺少 meta（篇號、章號、狀態）`);
+  else {
+    if (!bookNums.has(meta.book)) errors.push(`${id}：篇號 ${meta.book} 不在篇名表裡`);
+    if (!['draft', 'reviewed'].includes(meta.status)) errors.push(`${id}：status 只能是 draft 或 reviewed，現在是 ${meta.status}`);
   }
   const slides = cfg.slides || [];
   if (!slides.length) errors.push(`${id}：沒有任何投影片`);

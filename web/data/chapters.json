@@ -1,6 +1,7 @@
 {
  "學而1.1": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "reviewed",
   "slides": [
    {
     "type": "content",
@@ -80,6 +81,7 @@
  },
  "學而1.2": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "reviewed",
   "slides": [
    {
     "type": "content",
@@ -180,6 +182,7 @@
  },
  "學而1.3": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "reviewed",
   "slides": [
    {
     "type": "content",
@@ -227,6 +230,7 @@
  },
  "學而1.4": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "reviewed",
   "slides": [
    {
     "type": "content",
@@ -290,6 +294,7 @@
  },
  "學而1.5": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "reviewed",
   "slides": [
    {
     "type": "content",
@@ -353,6 +358,7 @@
  },
  "學而1.6": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "reviewed",
   "slides": [
    {
     "type": "content",
@@ -437,6 +443,7 @@
  },
  "學而1.7": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "reviewed",
   "slides": [
    {
     "type": "content",
@@ -516,6 +523,7 @@
  },
  "學而1.8": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",
@@ -584,6 +592,7 @@
  },
  "學而1.9": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",
@@ -631,6 +640,7 @@
  },
  "學而1.10": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",
@@ -731,6 +741,7 @@
  },
  "學而1.11": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",
@@ -794,6 +805,7 @@
  },
  "學而1.12": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",
@@ -878,6 +890,7 @@
  },
  "學而1.13": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",
@@ -911,7 +924,7 @@
      },
      {
       "zh": "[遠:1]恥辱也；",
-      "py": "yuàn chǐ rǔ yě",
+      "py": "yuàn chǐ rù yě",
       "en": "then one can stay far from shame and disgrace."
      }
     ]
@@ -943,7 +956,7 @@
      },
      {
       "zh": "恥辱",
-      "py": "chǐ rǔ",
+      "py": "chǐ rù",
       "en": "shame, disgrace"
      },
      {
@@ -957,6 +970,7 @@
  },
  "學而1.14": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",
@@ -1031,6 +1045,7 @@
  },
  "學而1.15": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",
@@ -1163,6 +1178,7 @@
  },
  "學而1.16": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
+  "status": "draft",
   "slides": [
    {
     "type": "content",

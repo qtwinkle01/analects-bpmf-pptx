@@ -183,3 +183,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# 網頁：CI 部署時才產生的檔案（每章與整篇 PPT、對應清單）
+web/pptx/
+web/data/pptx.json

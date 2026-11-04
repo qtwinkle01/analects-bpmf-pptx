@@ -117,7 +117,9 @@
       const H = Math.ceil(size * 1.5);
 
       const canvas = document.createElement('canvas');
-      const ratio = global.devicePixelRatio > 1 ? 2 : 1.5; // 提高解析度
+      // 解析度倍率：匯出 PPT 時由 pptx.js 設定 forceRatio（固定 3 倍，與命令列版相同）；
+      // 螢幕預覽則依螢幕密度
+      const ratio = this.forceRatio || (global.devicePixelRatio > 1 ? 2 : 1.5);
       canvas.width = Math.ceil(W * ratio);
       canvas.height = Math.ceil(H * ratio);
       const ctx = canvas.getContext('2d');

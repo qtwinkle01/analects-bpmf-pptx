@@ -10,6 +10,9 @@
 | **v2（推薦）** | `make_analects_deck.py` | 設計版：紙色背景、章節標籤、生詞卡片、拼音逐字對齊、精簡破音字語法 |
 | v1（舊版） | `make_analects_pptx.py` | 原始版面（白底、拼音帶底線），保留供參考 |
 
+另有**網站**（`web/`，自動部署到 GitHub Pages）：老師版可以在瀏覽器裡預覽、修改、下載每一章或整篇的 PPT（中文／English 介面）；
+開發者版用來校對與維護資料。網站與 v2 產生器讀同一份 `examples/v2/*.yaml`，詳見 [web/README.md](web/README.md)。
+
 ---
 
 ## v2 產生器（make_analects_deck.py）
@@ -42,7 +45,8 @@ python make_analects_deck.py --config examples/v2/學而1.4.yaml --output 學而
 ```
 
 `examples/v2/` 內含**學而篇全部 16 章**（學而1.1.yaml ～ 學而1.16.yaml），
-每章一檔：課文投影片（注音＋對齊拼音＋Legge 英譯）＋一頁重點生詞卡。
+每章一檔：課文投影片（注音＋對齊拼音＋Legge 英譯）＋一頁重點生詞卡；
+檔名是「篇名＋篇號.章號」，篇名與篇號要和同資料夾的 `books.yaml`（二十篇篇名表）一致。
 另有 `examples/學而1.1-1.3_v2.yaml` 為含標題頁／介紹頁／結尾頁的合輯範例。
 
 ### 破音字語法
@@ -73,12 +77,13 @@ python make_analects_deck.py --config examples/v2/學而1.4.yaml --output 學而
 | 論（論語） | ㄌㄨㄣˊ lún | `[論:1]` |
 
 > 注意：讀音順序依字型版本而定，新增破音字時建議先渲染確認。
-> 另「賜」台灣標準注音為ㄙˋ，拼音對應寫 `sì`。
+> 拼音一律依台灣標準讀音（與投影片上的注音一致），例如「賜」ㄙˋ寫 `sì`、「辱」ㄖㄨˋ寫 `rù`。
 
 ### YAML 格式（v2）
 
 ```yaml
 footer: "論語 · 學而篇 | The Analects · Book One"   # 頁尾文字（選填）
+status: reviewed                                   # 校對狀態：reviewed＝已校對、draft＝待校對（網站用）
 
 slides:
   # ── 課文投影片 ──
@@ -115,8 +120,8 @@ slides:
     en: "Thank you!"
 ```
 
-排版建議：每行漢字（含標點）不超過 9 個字，超過會自動等比縮小；
-每張投影片最多 3 個區塊（說話者算 1 個），第 3 個區塊會自動改用緊湊間距。
+排版提示：每個字（含注音、標點）約佔 1.5 個字寬，課文一行超過 7 個字、說話者超過 9 個字時，該行會自動等比縮小。
+一頁有 3 個以上區塊（說話者算 1 個）時整頁使用緊湊間距；內容放不下時整頁等比例縮小（最小 0.6 倍），縮到 0.6 倍仍放不下會提示把句子拆到下一頁。
 
 ---
 
@@ -135,14 +140,14 @@ python make_analects_pptx.py --config examples/學而1.4.yaml   # YAML 設定檔
 - 破音字可用 IVS 選擇子（如 `鮮\U000E01E1`）或 `ss_feature: ss01`；
   IVS 對照可查官方工具 https://buttaiwan.github.io/bpmfvs/
 - **已知限制**：產出超過 5 張投影片時未修補 `[Content_Types].xml`，
-  PowerPoint 會顯示空白頁（v2 已修正）
+  PowerPoint 會顯示空白頁（v2 會自動補宣告，沒有這個問題）
 
 ---
 
 ## 資料夾結構
 
 ```
-analects_pptx/
+analects-bpmf-pptx/
 ├── make_analects_deck.py        # v2 產生器（推薦）
 ├── make_analects_pptx.py        # v1 產生器（舊版）
 ├── template.pptx                # 版面範本（必須保留）
@@ -150,11 +155,15 @@ analects_pptx/
 │   └── BpmfZihiKaiStd-Regular.ttf   # BPMFVs 注音字型
 ├── examples/
 │   ├── v2/                      # ★ 學而篇全 16 章（v2 格式，每章一檔）
+│   │   ├── books.yaml           # 二十篇篇名表（篇號、篇名、拼音、英文）
 │   │   ├── 學而1.1.yaml … 學而1.16.yaml
 │   ├── 學而1.1-1.3_v2.yaml      # v2 合輯範例（含標題／介紹／結尾頁）
 │   ├── 學而1.4.yaml             # v1 格式範例
 │   ├── 學而1.4_characters.yaml  # v1 逐字格式範例
 │   └── …
+├── web/                         # 網站（老師版 index.html、開發者版 edit.html），見 web/README.md
+├── .github/workflows/
+│   └── deploy-web.yml           # 網站自動檢查、產生 PPT、部署到 GitHub Pages
 └── README.md
 ```
 
@@ -175,5 +184,5 @@ analects_pptx/
 ## 常見問題
 
 1. **PowerPoint 第 6 頁之後空白？** 用 v1 產生超過 5 頁會發生（範本 Content Types 未宣告），請改用 v2。
-2. **破音字顯示「NO GLYPH」豆腐字？** 舊做法依賴 Pillow raqm 處理 IVS，部分平台不支援；v2 改用 harfbuzz 逐字 shaping，不受影響。
+2. **會不會出現「NO GLYPH」豆腐字？** 不會。兩個產生器都用 harfbuzz 逐字 shaping 處理 IVS 破音字（不依賴 Pillow raqm），各平台結果一致。
 3. **拼音對不齊？** v2 的拼音是逐字定位的，音節數必須等於該行漢字數（標點不算），數量不符會直接報錯提示。
