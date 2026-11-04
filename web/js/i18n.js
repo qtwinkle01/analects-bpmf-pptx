@@ -43,7 +43,7 @@
       vFromVocab: '已從「{from}」生詞卡帶入讀音、拼音與英文', vFromText: '已從「{from}」課文帶入讀音與拼音，英文請自行輸入',
       vFromChars: '已逐字從課文帶入讀音與拼音，請確認破音字；英文請自行輸入', vNone: '論語資料裡還沒有這些字的讀音，請手動輸入拼音與英文',
       vMissing: '「{c}」找不到拼音，請手動補上', vNotInFont: '「{c}」不在網頁字型裡，預覽與 PPT 不會有注音',
-      footerNote: '論語原文與 Legge 英譯為公有領域；注音字型：ButTaiwan BPMFVs。', devLink: '校對者入口', teacherLink: '老師版',
+      footerNote: '論語原文為公有領域；英譯以 James Legge 的公有領域譯本為基礎修訂。注音字型：ButTaiwan BPMFVs。', devLink: '校對者入口', teacherLink: '老師版',
       langZh: '中文', langEn: 'English',
     },
     en: {
@@ -79,7 +79,7 @@
       vFromVocab: 'Filled in reading, pinyin and English from the vocabulary of {from}', vFromText: 'Filled in reading and pinyin from the text of {from}; please add the English',
       vFromChars: 'Filled in reading and pinyin character by character — please check polyphonic characters and add the English', vNone: 'No reading data for these characters yet — please type the pinyin and English',
       vMissing: 'No pinyin found for 「{c}」 — please type it', vNotInFont: '「{c}」 is not in the web font, so it will appear without zhuyin',
-      footerNote: 'The Analects text and James Legge’s translation are in the public domain. Zhuyin font: ButTaiwan BPMFVs.', devLink: 'Maintainer editor',
+      footerNote: 'The Analects text is in the public domain; the English is adapted from James Legge’s public-domain translation. Zhuyin font: ButTaiwan BPMFVs.', devLink: 'Maintainer editor',
       langZh: '中文', langEn: 'English',
     },
   };

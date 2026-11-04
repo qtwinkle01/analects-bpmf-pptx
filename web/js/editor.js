@@ -405,7 +405,7 @@
       });
     }
 
-    /** 手動合成注音：直行排在字的右邊（跟投影片一樣），透明背景、不會蓋住字 */
+    /** 手動合成注音：直行排在字右邊預留的注音位置（跟投影片一樣），背景透明，字完整露出 */
     function manualZhuyin(ann) {
       const last = ann[ann.length - 1];
       const tone = TONES.includes(last) ? last : '';

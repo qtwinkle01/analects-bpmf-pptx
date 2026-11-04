@@ -204,7 +204,7 @@ a.book-card:hover { border-color: var(--red); }
 .zh-char:hover { background: #F3E6C9; }
 .zh-char.has-alt { box-shadow: inset 0 -3px 0 rgba(156,54,38,.35); }
 .zh-char.is-manual { box-shadow: inset 0 -3px 0 rgba(47,93,124,.5); }
-/* 手動合成注音：直行放在字右邊預留的注音位置，透明背景，不蓋住字 */
+/* 手動合成注音：直行放在字右邊預留的注音位置，背景透明，字完整露出 */
 .zh-char .mz { position: absolute; top: 0; bottom: 0; right: .02em; display: flex; align-items: center; gap: .03em; pointer-events: none; color: var(--english); font-family: var(--sans); }
 .mz-col { display: flex; flex-direction: column; align-items: center; font-size: .27em; line-height: 1.08; }
 .mz-tone { font-size: .27em; line-height: 1; }

@@ -120,8 +120,8 @@ slides:
     en: "Thank you!"
 ```
 
-排版建議：每行漢字（含標點）不超過 9 個字，超過會自動等比縮小；
-每張投影片最多 3 個區塊（說話者算 1 個），第 3 個區塊會自動改用緊湊間距。
+排版提示：每個字（含注音、標點）約佔 1.5 個字寬，課文一行超過 7 個字、說話者超過 9 個字時，該行會自動等比縮小。
+一頁有 3 個以上區塊（說話者算 1 個）時整頁使用緊湊間距；內容放不下時整頁等比例縮小（最小 0.6 倍），縮到 0.6 倍仍放不下會提示把句子拆到下一頁。
 
 ---
 
@@ -140,7 +140,7 @@ python make_analects_pptx.py --config examples/學而1.4.yaml   # YAML 設定檔
 - 破音字可用 IVS 選擇子（如 `鮮\U000E01E1`）或 `ss_feature: ss01`；
   IVS 對照可查官方工具 https://buttaiwan.github.io/bpmfvs/
 - **已知限制**：產出超過 5 張投影片時未修補 `[Content_Types].xml`，
-  PowerPoint 會顯示空白頁（v2 已修正）
+  PowerPoint 會顯示空白頁（v2 會自動補宣告，沒有這個問題）
 
 ---
 
@@ -184,5 +184,5 @@ analects-bpmf-pptx/
 ## 常見問題
 
 1. **PowerPoint 第 6 頁之後空白？** 用 v1 產生超過 5 頁會發生（範本 Content Types 未宣告），請改用 v2。
-2. **破音字顯示「NO GLYPH」豆腐字？** 舊做法依賴 Pillow raqm 處理 IVS，部分平台不支援；v2 改用 harfbuzz 逐字 shaping，不受影響。
+2. **會不會出現「NO GLYPH」豆腐字？** 不會。兩個產生器都用 harfbuzz 逐字 shaping 處理 IVS 破音字（不依賴 Pillow raqm），各平台結果一致。
 3. **拼音對不齊？** v2 的拼音是逐字定位的，音節數必須等於該行漢字數（標點不算），數量不符會直接報錯提示。
