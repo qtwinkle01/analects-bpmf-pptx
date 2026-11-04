@@ -2,6 +2,7 @@
 # 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
 
 footer: "論語 · 學而篇 | The Analects · Book One"
+status: reviewed
 
 slides:
   - type: content

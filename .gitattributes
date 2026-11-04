@@ -1,0 +1,8 @@
+# 文字檔一律用 LF 換行（Windows 編輯器存成 CRLF，commit 時也會轉回 LF）
+* text=auto eol=lf
+
+# 二進位檔不要做換行轉換
+*.ttf binary
+*.woff2 binary
+*.pptx binary
+*.png binary

@@ -1,0 +1,25 @@
+# 論語二十篇：num＝篇號、zh＝篇名、py＝拼音、en＝英文
+# 網頁的目錄、頁尾文字都從這裡產生；章節檔名用「篇名＋篇號.章號」，例如 學而1.1.yaml
+# 拼音依台灣標準讀音（與注音字型的預設讀音一致）
+
+books:
+  - { num: 1, zh: "學而", py: "Xué ér", en: "Book One" }
+  - { num: 2, zh: "為政", py: "Wéi zhèng", en: "Book Two" }
+  - { num: 3, zh: "八佾", py: "Bā yì", en: "Book Three" }
+  - { num: 4, zh: "里仁", py: "Lǐ rén", en: "Book Four" }
+  - { num: 5, zh: "公冶長", py: "Gōng yě cháng", en: "Book Five" }
+  - { num: 6, zh: "雍也", py: "Yōng yě", en: "Book Six" }
+  - { num: 7, zh: "述而", py: "Shù ér", en: "Book Seven" }
+  - { num: 8, zh: "泰伯", py: "Tài bó", en: "Book Eight" }
+  - { num: 9, zh: "子罕", py: "Zǐ hǎn", en: "Book Nine" }
+  - { num: 10, zh: "鄉黨", py: "Xiāng dǎng", en: "Book Ten" }
+  - { num: 11, zh: "先進", py: "Xiān jìn", en: "Book Eleven" }
+  - { num: 12, zh: "顏淵", py: "Yán yuān", en: "Book Twelve" }
+  - { num: 13, zh: "子路", py: "Zǐ lù", en: "Book Thirteen" }
+  - { num: 14, zh: "憲問", py: "Xiàn wèn", en: "Book Fourteen" }
+  - { num: 15, zh: "衛靈公", py: "Wèi líng gōng", en: "Book Fifteen" }
+  - { num: 16, zh: "季氏", py: "Jì shì", en: "Book Sixteen" }
+  - { num: 17, zh: "陽貨", py: "Yáng huò", en: "Book Seventeen" }
+  - { num: 18, zh: "微子", py: "Wéi zǐ", en: "Book Eighteen" }
+  - { num: 19, zh: "子張", py: "Zǐ zhāng", en: "Book Nineteen" }
+  - { num: 20, zh: "堯曰", py: "Yáo yuē", en: "Book Twenty" }
