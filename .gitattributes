@@ -6,3 +6,6 @@
 *.woff2 binary
 *.pptx binary
 *.png binary
+
+# 原文快照保持原始位元組（SOURCE.md 記錄了它的 SHA-256）
+tools/bootstrap/source/lunyu.chinese-poetry.json -text

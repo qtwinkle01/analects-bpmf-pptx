@@ -187,3 +187,7 @@ __marimo__/
 # 網頁：CI 部署時才產生的檔案（每章與整篇 PPT、對應清單）
 web/pptx/
 web/data/pptx.json
+
+# 初版產生器的輸出（可用 tools/bootstrap/make_drafts.py 重新產生）
+tools/bootstrap/drafts/
+tools/bootstrap/source/lunyu.tw.json
