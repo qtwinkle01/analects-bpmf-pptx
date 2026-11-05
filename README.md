@@ -13,6 +13,8 @@
 另有**網站**（`web/`，自動部署到 GitHub Pages）：老師版可以在瀏覽器裡預覽、修改、下載每一章或整篇的 PPT（中文／English 介面）；
 開發者版用來校對與維護資料。網站與 v2 產生器讀同一份 `examples/v2/*.yaml`，詳見 [web/README.md](web/README.md)。
 
+目前進度、待決定事項與其他篇的初版產生工具（`tools/bootstrap/`），見 [docs/HANDOFF.md](docs/HANDOFF.md)。
+
 ---
 
 ## v2 產生器（make_analects_deck.py）
