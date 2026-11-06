@@ -9,7 +9,7 @@ slides:
     tag: "學而 1.8 · Analects 1.8"
     speaker: { zh: "子曰：", py: "Zǐ yuē", en: "Confucius said," }
     lines:
-      - zh: "「君子不重則不威，"
+      - zh: "「君子[不:1]重則不威，"
         py: "jūn zǐ bù zhòng zé bù wēi"
         en: "“A gentleman who is not dignified will not command respect,"
       - zh: "學則不固。"
