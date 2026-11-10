@@ -2,7 +2,7 @@
 # 破音字語法：[字:1]=第2讀音、[字:2]=第3讀音、[字|ㄩㄝˋ]=手動合成注音
 
 footer: "論語 · 學而篇 | The Analects · Book One"
-status: draft
+status: reviewed
 
 slides:
   - type: content
@@ -10,10 +10,10 @@ slides:
     speaker: { zh: "子曰：", py: "Zǐ yuē", en: "Confucius said," }
     lines:
       - zh: "「君子[不:1]重則不威，"
-        py: "jūn zǐ bù zhòng zé bù wēi"
+        py: "jūn zǐ bú zhòng zé bù wēi"
         en: "“A gentleman who is not dignified will not command respect,"
-      - zh: "學則不固。"
-        py: "xué zé bù gù"
+      - zh: "學則[不:1]固。"
+        py: "xué zé bú gù"
         en: "and his learning will not be solid, either."
 
   - type: content

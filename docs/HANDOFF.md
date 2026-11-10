@@ -9,7 +9,7 @@
 
 | 項目 | 狀態 |
 |---|---|
-| 學而篇 16 章 | `examples/v2/學而1.1.yaml` … `學而1.16.yaml`；1.1–1.7 已人工校對（`status: reviewed`），1.8–1.16 待校對（`status: draft`） |
+| 學而篇 16 章 | `examples/v2/學而1.1.yaml` … `學而1.16.yaml`；1.1–1.8 已人工校對（`status: reviewed`），1.9–1.16 待校對（`status: draft`） |
 | 網站 | 老師版 `web/index.html`、開發者版 `web/edit.html`，已部署到 GitHub Pages（說明見 `web/README.md`） |
 | 其他 19 篇 | **還沒放進正式資料**。初版產生器已完成並驗證（見第 3 節），等第 2 節的決定 |
 

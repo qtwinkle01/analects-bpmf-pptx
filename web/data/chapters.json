@@ -523,7 +523,7 @@
  },
  "學而1.8": {
   "footer": "論語 · 學而篇 | The Analects · Book One",
-  "status": "draft",
+  "status": "reviewed",
   "slides": [
    {
     "type": "content",
@@ -535,13 +535,13 @@
     },
     "lines": [
      {
-      "zh": "「君子不重則不威，",
-      "py": "jūn zǐ bù zhòng zé bù wēi",
+      "zh": "「君子[不:1]重則不威，",
+      "py": "jūn zǐ bú zhòng zé bù wēi",
       "en": "“A gentleman who is not dignified will not command respect,"
      },
      {
-      "zh": "學則不固。",
-      "py": "xué zé bù gù",
+      "zh": "學則[不:1]固。",
+      "py": "xué zé bú gù",
       "en": "and his learning will not be solid, either."
      }
     ]
