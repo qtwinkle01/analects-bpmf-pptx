@@ -123,6 +123,7 @@ CI/CD 設定在 `.github/workflows/deploy-web.yml`。
 |---|---|
 | 重建資產 | 跑 `build_assets.py`，從 `examples/v2/*.yaml` 與完整字型重新產生 `data/*.json` 與精簡字型 |
 | 版面檢查 | 跑 `check_layout.js`，有錯就擋下部署（見下） |
+| 讀音檢查 | 跑 `check_readings.py`，注音與拼音不是同一個讀音就擋下部署（見下） |
 | 預先產生 PPT | 安裝 Playwright 與 Carlito 字型（字寬與 Calibri 相同），用無頭 Chromium 跑 `export_all_pptx.js`：呼叫網頁本身的排版程式，產生每章與整篇的 PPT 到 `pptx/` |
 | 檔案齊全檢查 | 確認 HTML／JS／字型／JSON／PPT 都在且非空 |
 | 加上版本號 | 把 `index.html`、`edit.html`、`styles.css` 裡的 `__BUILD__` 換成 commit 編號，所有檔案網址變成 `?v=xxxxxxx`，瀏覽器每次部署都會抓新檔 |
@@ -158,6 +159,35 @@ node web/tools/check_layout.js web/tools/.widths.json
 
 > 框線超出邊界只列為警告不擋部署 — 文字框刻意留高（`valign: top`，多的高度不會畫東西），
 > 拼音框則是固定寬度置中對齊在漢字下方，兩側溢出是正常的。
+
+### 讀音檢查（check_readings.py）
+
+投影片上的注音來自字型（破音字用 `[字:1]` 選讀音），拼音則是 YAML 裡另外打的字，兩邊很容易只改一邊。
+這個檢查用 `tools/bootstrap/zhuyin_font.py` 從字型讀出每個字實際顯示的注音，轉成拼音後與 YAML 逐字比對。
+
+會**擋下部署**的錯誤：
+
+- 注音與拼音不是同一個讀音（例如標了 `[不:1]` ㄅㄨˊ，拼音卻還是 `bù`）；課文、說話者、生詞卡都會檢查
+- 手動注音 `[字|ㄩㄝˋ]` 與拼音對不上
+- 漢字數 ≠ 拼音音節數
+
+字型沒有的字、認不出來的注音只列為提醒，不擋部署。
+
+本機執行（改完 YAML、push 之前跑一次）：
+
+```bash
+pip install pyyaml fonttools freetype-py numpy pillow pypinyin
+```
+
+```bash
+python web/tools/check_readings.py
+```
+
+只檢查一章：
+
+```bash
+python web/tools/check_readings.py examples/v2/學而1.8.yaml
+```
 
 ### 本機預覽
 
@@ -198,6 +228,7 @@ web/
     ├── build_assets.py     # 從 YAML + 完整字型產生 data/ 與精簡字型
     ├── font_widths.py      # 匯出字寬表（給 check_layout.js）
     ├── check_layout.js     # 無瀏覽器版面／資料檢查（CI 用）
+    ├── check_readings.py   # 注音與拼音是否一致（CI 用）
     └── export_all_pptx.js  # 用無頭 Chromium 預先產生每章與整篇 PPT（CI 用）
 .github/workflows/deploy-web.yml
 ```

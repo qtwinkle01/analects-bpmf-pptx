@@ -101,4 +101,5 @@ python tools/bootstrap/make_drafts.py --books 2
 2. 改第 4 節的 1、2。
 3. `make_drafts.py --books 2 --out examples/v2` 先放為政篇，部署後在網站上校對幾章，確認流程順暢。
 4. 視需要補英譯（Claude 初稿或 Legge），再放其他篇。
-5. 之後可以把「注音與拼音是否一致」的檢查（用 `zhuyin_font.py`）加進 CI。
+
+「注音與拼音是否一致」的檢查已加進 CI：`web/tools/check_readings.py`（用 `zhuyin_font.py`），說明見 `web/README.md`。

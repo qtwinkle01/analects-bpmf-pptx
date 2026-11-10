@@ -7,12 +7,14 @@ on:
       - 'web/**'
       - 'examples/v2/**'
       - 'fonts/**'
+      - 'tools/bootstrap/zhuyin_font.py'
       - '.github/workflows/deploy-web.yml'
   pull_request:
     paths:
       - 'web/**'
       - 'examples/v2/**'
       - 'fonts/**'
+      - 'tools/bootstrap/zhuyin_font.py'
   workflow_dispatch:
 
 permissions:
@@ -41,7 +43,7 @@ jobs:
           node-version: '20'
 
       - name: 安裝相依套件
-        run: pip install pyyaml fonttools brotli
+        run: pip install pyyaml fonttools brotli freetype-py numpy pillow pypinyin
 
       - name: 從 examples/v2 重建 data/*.json 與精簡字型
         run: |
@@ -54,6 +56,10 @@ jobs:
         run: |
           python web/tools/font_widths.py --font web/assets/bpmf-subset.woff2 --out "$RUNNER_TEMP/widths.json"
           node web/tools/check_layout.js "$RUNNER_TEMP/widths.json"
+
+      # 注音來自字型、拼音是 YAML 另外打的字；只改一邊（例如標了 [不:1] 卻沒改拼音）會在這裡擋下
+      - name: 讀音檢查（每個字的注音與拼音是否一致）
+        run: python web/tools/check_readings.py --yaml-dir examples/v2 --font fonts/BpmfZihiKaiStd-Regular.ttf
 
       # Carlito 與 Calibri 字寬相同：讓英文換行的預估跟 PowerPoint 實際顯示一致
       - name: 安裝 Playwright 與 Carlito 字型（預先產生 PPT 用）
